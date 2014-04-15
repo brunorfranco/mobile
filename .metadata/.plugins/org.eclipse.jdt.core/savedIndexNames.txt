@@ -1,0 +1,6 @@
+INDEX VERSION 1.126+C:\Users\Bruno\Documents\GitHub\fs-mobile-4\.metadata\.plugins\org.eclipse.jdt.core
+1284074322.index
+4164268260.index
+4155764186.index
+4060754699.index
+733442621.index
