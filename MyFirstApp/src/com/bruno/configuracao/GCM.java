@@ -1,5 +1,7 @@
 package com.bruno.configuracao;
 
+import com.google.android.gcm.GCMRegistrar;
+
 import android.content.Context;
 import android.util.Log;
 
