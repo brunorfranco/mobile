@@ -30,7 +30,7 @@
     <Button
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:text="@string/button_entrar"
-	    android:onClick="entrar"
+	    android:text="@string/button_cadastrar"
+	    android:onClick="cadastrar"
 	    android:layout_gravity="center"/>
 </LinearLayout>

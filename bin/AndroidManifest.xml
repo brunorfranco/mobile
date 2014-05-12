@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.notiufg.MainActivity"
+            android:name="com.notiufg.activity.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,8 +23,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.notiufg.LoginActivity"
+            android:name="com.notiufg.activity.LoginActivity"
             android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name="com.notiufg.activity.NovoUsuarioActivity"
+            android:label="@string/title_activity_novo_usuario" >
         </activity>
     </application>
 
