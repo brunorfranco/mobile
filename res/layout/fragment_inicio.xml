@@ -2,18 +2,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#1363B3">
+    
     <ImageView
                 android:id="@+id/ImageView01"
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1.00"
-                android:src="@drawable/ufg_icon" />
+                android:src="@drawable/icon_ufg_branco"
+                android:background="#1363B3" />
     <Button
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:text="@string/button_login"
-	    android:onClick="sendMessage" 
+	    android:onClick="login" 
 	    android:layout_gravity="center"/>
     
     <TextView
@@ -28,6 +31,6 @@
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:text="@string/button_entrar"
-	    android:onClick="sendMessage"
+	    android:onClick="entrar"
 	    android:layout_gravity="center"/>
 </LinearLayout>

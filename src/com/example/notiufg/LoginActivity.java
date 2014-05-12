@@ -1,23 +1,25 @@
 package com.example.notiufg;
 
-import android.content.Intent;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBar;
+import android.support.v4.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.os.Build;
 
-public class MainActivity extends ActionBarActivity {
+public class LoginActivity extends ActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_login);
 
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
@@ -29,7 +31,17 @@ public class MainActivity extends ActionBarActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		getMenuInflater().inflate(R.menu.login, menu);
+		
+		TextView text = (TextView) findViewById(R.id.text1);
+	    text.setTextColor(Color.BLUE);
+	    
+	    TextView text2 = (TextView) findViewById(R.id.text2);
+	    text2.setTextColor(Color.BLUE);
+	    
+	    Button buttonEntrar = (Button) findViewById(R.id.buttonEntrar);
+	    buttonEntrar.setTextColor(Color.BLUE);
+	    
 		return true;
 	}
 
@@ -56,15 +68,10 @@ public class MainActivity extends ActionBarActivity {
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_inicio, container,
-					false);
+			View rootView = inflater.inflate(R.layout.fragment_login,
+					container, false);
 			return rootView;
 		}
-	}
-	
-	public void login(View view) {
-		Intent intent = new Intent(this, LoginActivity.class);
-	    startActivity(intent);
 	}
 
 }
