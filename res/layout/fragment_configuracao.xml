@@ -1,0 +1,282 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:orientation="vertical" > 
+        
+<!--     UFG -->
+	<TextView 
+		android:id="@+id/textView2" 
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content" 
+		android:text="@string/geral" /> 
+		
+		<LinearLayout android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content" 
+	        android:orientation="horizontal">
+	        
+		   <TextView 
+				android:id="@+id/textView3" 
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content" 
+				android:text="@string/title_activity_login"
+				android:layout_gravity="left" />  
+				
+		    <Button
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="@string/ativa"
+			    android:onClick="login" 
+			    android:layout_gravity="right"/>
+		    
+		    <Button
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="@string/desativa"
+			    android:onClick="login" 
+			    android:layout_gravity="right"/>
+		    
+		</LinearLayout>
+		
+<!-- 		Cursos	 -->
+		
+		<TextView 
+			android:id="@+id/textView4" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:text="@string/curso" /> 
+		
+		<LinearLayout android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content" 
+	        android:orientation="horizontal">
+	        
+		   <TextView 
+				android:id="@+id/textView5" 
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content" 
+				android:text="@string/EngenhariaDeSoftware"
+				android:layout_gravity="left" />  
+				
+		    <Button
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="@string/ativa"
+			    android:onClick="login" 
+			    android:layout_gravity="right"/>
+		    
+		    <Button
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="@string/desativa"
+			    android:onClick="login" 
+			    android:layout_gravity="right"/>
+		    
+		</LinearLayout>
+		
+		<!-- 		Disciplinas	 -->
+		
+		<TextView 
+			android:id="@+id/textView6" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:text="@string/disciplinas" /> 
+		
+		<LinearLayout android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content" 
+	        android:orientation="vertical">
+		
+			<LinearLayout android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content" 
+		        android:orientation="horizontal">
+		        
+			   <TextView 
+					android:id="@+id/textView7" 
+					android:layout_width="wrap_content" 
+					android:layout_height="wrap_content" 
+					android:text="@string/integracao"
+					android:layout_gravity="left" />  
+					
+			    <Button
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="@string/ativa"
+				    android:onClick="login" 
+				    android:layout_gravity="right"/>
+			    
+			    <Button
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="@string/desativa"
+				    android:onClick="login" 
+				    android:layout_gravity="right"/>
+			    
+			</LinearLayout>
+			
+			<LinearLayout android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content" 
+		        android:orientation="horizontal">
+		        
+			   <TextView 
+					android:id="@+id/textView8" 
+					android:layout_width="wrap_content" 
+					android:layout_height="wrap_content" 
+					android:text="@string/dsc"
+					android:layout_gravity="left" />  
+					
+			    <Button
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="@string/ativa"
+				    android:onClick="login" 
+				    android:layout_gravity="right"/>
+			    
+			    <Button
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="@string/desativa"
+				    android:onClick="login" 
+				    android:layout_gravity="right"/>
+			    
+			</LinearLayout>
+			
+			<LinearLayout android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content" 
+		        android:orientation="horizontal">
+		        
+			   <TextView 
+					android:id="@+id/textView9" 
+					android:layout_width="wrap_content" 
+					android:layout_height="wrap_content" 
+					android:text="@string/dsp"
+					android:layout_gravity="left" />  
+					
+			    <Button
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="@string/ativa"
+				    android:onClick="login" 
+				    android:layout_gravity="right"/>
+			    
+			    <Button
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="@string/desativa"
+				    android:onClick="login" 
+				    android:layout_gravity="right"/>
+			    
+			</LinearLayout>
+			
+			<LinearLayout android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content" 
+		        android:orientation="horizontal">
+		        
+			   <TextView 
+					android:id="@+id/textView10" 
+					android:layout_width="wrap_content" 
+					android:layout_height="wrap_content" 
+					android:text="@string/dsw"
+					android:layout_gravity="left" />  
+					
+			    <Button
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="@string/ativa"
+				    android:onClick="login" 
+				    android:layout_gravity="right"/>
+			    
+			    <Button
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="@string/desativa"
+				    android:onClick="login" 
+				    android:layout_gravity="right"/>
+			    
+			</LinearLayout>
+			
+			<LinearLayout android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content" 
+		        android:orientation="horizontal">
+		        
+			   <TextView 
+					android:id="@+id/textView11" 
+					android:layout_width="wrap_content" 
+					android:layout_height="wrap_content" 
+					android:text="@string/mobile"
+					android:layout_gravity="left" />  
+					
+			    <Button
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="@string/ativa"
+				    android:onClick="login" 
+				    android:layout_gravity="right"/>
+			    
+			    <Button
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="@string/desativa"
+				    android:onClick="login" 
+				    android:layout_gravity="right"/>
+			    
+			</LinearLayout>
+			
+		</LinearLayout>
+		
+		
+		
+	
+<!-- 	<EditText  -->
+<!-- 		android:id="@+id/ednome"  -->
+<!-- 		android:layout_width="wrap_content"  -->
+<!-- 		android:layout_height="wrap_content" >  -->
+<!-- 		<requestFocus />  -->
+<!-- 	</EditText>  -->
+	
+<!-- 	<TextView  -->
+<!-- 		android:id="@+id/textView4"  -->
+<!-- 		android:layout_width="wrap_content"  -->
+<!-- 		android:layout_height="wrap_content"  -->
+<!-- 		android:text="@string/cpf" />  -->
+	
+<!-- 	<EditText  -->
+<!-- 		android:id="@+id/edcpf"  -->
+<!-- 		android:layout_width="wrap_content"  -->
+<!-- 		android:layout_height="wrap_content" >  -->
+<!-- 	</EditText>  -->
+	
+<!-- 	<TextView  -->
+<!-- 		android:id="@+id/textView3"  -->
+<!-- 		android:layout_width="wrap_content"  -->
+<!-- 		android:layout_height="wrap_content"  -->
+<!-- 		android:text="@string/email" />  -->
+	
+<!-- 	<EditText  -->
+<!-- 		android:id="@+id/edEmail"  -->
+<!-- 		android:layout_width="wrap_content"  -->
+<!-- 		android:layout_height="wrap_content" />  -->
+	
+<!-- 	<TextView  -->
+<!-- 		android:id="@+id/textView4"  -->
+<!-- 		android:layout_width="wrap_content"  -->
+<!-- 		android:layout_height="wrap_content"  -->
+<!-- 		android:text="@string/telefone" />  -->
+	
+<!-- 	<EditText  -->
+<!-- 		android:id="@+id/edTelefone"  -->
+<!-- 		android:layout_width="wrap_content"  -->
+<!-- 		android:layout_height="wrap_content" />  -->
+	
+<!-- 	<LinearLayout  -->
+<!-- 		android:id="@+id/linearLayout1"  -->
+<!-- 		android:layout_width="wrap_content"  -->
+<!-- 		android:layout_height="wrap_content"  -->
+<!-- 		android:orientation="horizontal" >  -->
+	
+<!-- 		<Button  -->
+<!-- 			android:id="@+id/btadicionar"  -->
+<!-- 			android:layout_width="wrap_content"  -->
+<!-- 			android:layout_height="wrap_content"  -->
+<!-- 			android:text="@string/adiconar" />  -->
+<!-- 	</LinearLayout>  -->
+	
+</LinearLayout>
+

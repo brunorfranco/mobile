@@ -13,9 +13,24 @@
     <string name="button_entrar_minusculo">Entrar</string>
     <string name="title_activity_novo_usuario">Cadastrar</string>
     <string name="nome">Nome:</string>
+    <string name="geral">Geral</string>
     <string name="email">E-mail:</string>
     <string name="telefone">Telefone:</string>
     <string name="cpf">CPF:</string>
     <string name="adiconar">Adicionar</string>
+    <string name="configuracoes">Configurações</string>
+    <string name="title_activity_menu">MenuActivity</string>
+    <string name="title_activity_configuracao">ConfiguracaoActivity</string>
+    <string name="ativa">Ativa</string>
+    <string name="desativa">Desativa</string>
+    <string name="curso">Curso</string>
+    <string name="EngenhariaDeSoftware">Engenharia de Software</string>
+    <string name="disciplinas">Disciplinas</string>
+    <string name="integracao">Integração</string>
+    <string name="dsc">DSC</string>
+    <string name="dsp">DSP</string>
+    <string name="dsw">DSW</string>
+    <string name="mobile">Mobile</string>
+    
 
 </resources>

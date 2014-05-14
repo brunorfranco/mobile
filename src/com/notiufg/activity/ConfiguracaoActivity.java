@@ -1,27 +1,27 @@
 package com.notiufg.activity;
 
-import android.content.Intent;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import com.example.notiufg.R;
+import com.example.notiufg.R.id;
+import com.example.notiufg.R.layout;
+import com.example.notiufg.R.menu;
+
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBar;
+import android.support.v4.app.Fragment;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
+import android.os.Build;
 
-import com.example.notiufg.R;
-
-public class LoginActivity extends ActionBarActivity {
+public class ConfiguracaoActivity extends ActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_login);
+		setContentView(R.layout.activity_configuracao);
 
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
@@ -33,22 +33,8 @@ public class LoginActivity extends ActionBarActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.login, menu);
-		
-		TextView text = (TextView) findViewById(R.id.text1);
-	    text.setTextColor(Color.BLUE);
-	    
-	    TextView text2 = (TextView) findViewById(R.id.text2);
-	    text2.setTextColor(Color.BLUE);
-	    
-	    Button buttonEntrar = (Button) findViewById(R.id.buttonEntrar);
-	    buttonEntrar.setTextColor(Color.BLUE);
-	    
-	    MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.activity_main_actions, menu);
-	 
-	    return super.onCreateOptionsMenu(menu);
-	    
+		getMenuInflater().inflate(R.menu.configuracao, menu);
+		return true;
 	}
 
 	@Override
@@ -74,15 +60,10 @@ public class LoginActivity extends ActionBarActivity {
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_login,
+			View rootView = inflater.inflate(R.layout.fragment_configuracao,
 					container, false);
 			return rootView;
 		}
-	}
-	
-	public void validarLogin(View view) {
-		Intent intent = new Intent(this, LoginActivity.class);
-	    startActivity(intent);
 	}
 
 }
