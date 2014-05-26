@@ -7,6 +7,7 @@ import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
@@ -22,6 +23,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.notiufg.R;
+import com.notify.db.DBAdapterNotificacao;
+import com.notify.db.DbHelperNotificacao;
 import com.notify.drawer.NavDrawerItem;
 import com.notify.drawer.NavDrawerListAdapter;
 import com.notify.fragment.HomeFragment;
@@ -55,7 +58,15 @@ public class MainActivity extends ActionBarActivity {
 //			getSupportFragmentManager().beginTransaction()
 //					.add(R.id.container, new PlaceholderFragment()).commit();
 //		}
-
+		
+		DBAdapterNotificacao datasource; 
+		datasource = new DBAdapterNotificacao(this); 
+		datasource.open();
+		datasource.createNotificacao("nometeste", "textoTeste", "datateste");
+		datasource.getNotificacoes();
+		
+		datasource.close();
+		
 		mTitle = mDrawerTitle = getTitle();
 		 
         // load slide menu items

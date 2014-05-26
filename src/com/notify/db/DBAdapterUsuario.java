@@ -10,15 +10,15 @@ import android.graphics.Bitmap;
 
 import com.notify.entity.Usuario;
 
-public class DBAdapter {
+public class DBAdapterUsuario {
 
 	private SQLiteDatabase database;
-	private DbHelper dbHelper;
-	private String[] allColumns = { DbHelper.ID, DbHelper.NOME, dbHelper.CPF, DbHelper.EMAIL,
-	DbHelper.TELEFONE};
+	private DbHelperUsuario dbHelper;
+	private String[] allColumns = { DbHelperUsuario.ID, DbHelperUsuario.NOME, dbHelper.CPF, DbHelperUsuario.EMAIL,
+	DbHelperUsuario.TELEFONE};
 	
-	public DBAdapter(Context context) {          
-		dbHelper = new DbHelper(context);
+	public DBAdapterUsuario(Context context) {          
+		dbHelper = new DbHelperUsuario(context);
 	}
 	
 	public Usuario createUsuario(String nome, String cpf, String email, String telefone, Bitmap foto) { 
@@ -44,7 +44,7 @@ public class DBAdapter {
 	}
 	
 	public void deletaUsuario (int idUsuario){ 
-        database.delete(DbHelper.TABLE_NAME, DbHelper.ID + " = " + idUsuario, null); 
+        database.delete(DbHelperUsuario.TABLE_NAME, DbHelperUsuario.ID + " = " + idUsuario, null); 
 	}
 	
 	public Cursor getUsuarios(){ 

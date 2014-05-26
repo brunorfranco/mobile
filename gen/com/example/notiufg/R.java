@@ -1100,15 +1100,16 @@ containing a value of this type.
         public static final int action_bar_root=0x7f05001a;
         public static final int action_bar_subtitle=0x7f050023;
         public static final int action_bar_title=0x7f050022;
-        public static final int action_config=0x7f05005a;
+        public static final int action_config=0x7f05005d;
         public static final int action_context_bar=0x7f05001d;
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f05005b;
+        public static final int action_settings=0x7f05005e;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
+        public static final int btNovoContacto=0x7f05005a;
         public static final int btadicionar=0x7f050059;
         public static final int buttonEntrar=0x7f050053;
         public static final int checkbox=0x7f05002d;
@@ -1142,6 +1143,7 @@ containing a value of this type.
         public static final int list_slidermenu=0x7f05003f;
         public static final int middle=0x7f050012;
         public static final int never=0x7f050009;
+        public static final int nomeRemetente=0x7f05005b;
         public static final int none=0x7f050010;
         public static final int normal=0x7f050000;
         public static final int progress_circular=0x7f050018;
@@ -1176,6 +1178,7 @@ containing a value of this type.
         public static final int textView7=0x7f050046;
         public static final int textView8=0x7f050047;
         public static final int textView9=0x7f050048;
+        public static final int texto=0x7f05005c;
         public static final int textviewdatefornocallspage=0x7f05004d;
         public static final int textviewdatefornocallspage2=0x7f05004e;
         public static final int title=0x7f05002b;
@@ -1238,22 +1241,27 @@ containing a value of this type.
         public static final int activity_configuracao=0x7f030018;
         public static final int activity_login=0x7f030019;
         public static final int activity_main=0x7f03001a;
-        public static final int activity_novo_usuario=0x7f03001b;
-        public static final int drawer_list_item=0x7f03001c;
-        public static final int fragment_configuracao=0x7f03001d;
-        public static final int fragment_home=0x7f03001e;
-        public static final int fragment_inicio=0x7f03001f;
-        public static final int fragment_login=0x7f030020;
-        public static final int fragment_main=0x7f030021;
-        public static final int fragment_novo_usuario=0x7f030022;
-        public static final int support_simple_spinner_dropdown_item=0x7f030023;
+        public static final int activity_notificacao=0x7f03001b;
+        public static final int activity_novo_usuario=0x7f03001c;
+        public static final int drawer_list_item=0x7f03001d;
+        public static final int fragment_configuracao=0x7f03001e;
+        public static final int fragment_home=0x7f03001f;
+        public static final int fragment_inicio=0x7f030020;
+        public static final int fragment_login=0x7f030021;
+        public static final int fragment_main=0x7f030022;
+        public static final int fragment_notificacao=0x7f030023;
+        public static final int fragment_novo_usuario=0x7f030024;
+        public static final int main_list_notificacao=0x7f030025;
+        public static final int notificacao_list_item=0x7f030026;
+        public static final int support_simple_spinner_dropdown_item=0x7f030027;
     }
     public static final class menu {
         public static final int activity_main_actions=0x7f0d0000;
         public static final int configuracao=0x7f0d0001;
         public static final int login=0x7f0d0002;
         public static final int main=0x7f0d0003;
-        public static final int novo_usuario=0x7f0d0004;
+        public static final int notificacao=0x7f0d0004;
+        public static final int novo_usuario=0x7f0d0005;
     }
     public static final class string {
         public static final int EngenhariaDeSoftware=0x7f0a0024;
@@ -1325,6 +1333,7 @@ containing a value of this type.
         public static final int title_activity_configuracao=0x7f0a0020;
         public static final int title_activity_login=0x7f0a0014;
         public static final int title_activity_menu=0x7f0a001f;
+        public static final int title_activity_notificacao=0x7f0a002b;
         public static final int title_activity_novo_usuario=0x7f0a0017;
     }
     public static final class style {

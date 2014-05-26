@@ -38,6 +38,10 @@
             android:name="com.notiufg.activity.ConfiguracaoActivity"
             android:label="@string/title_activity_configuracao" >
         </activity>
+        <activity
+            android:name="com.notiufg.activity.NotificacaoActivity"
+            android:label="@string/title_activity_notificacao" >
+        </activity>
     </application>
 
 </manifest>
