@@ -176,9 +176,9 @@ public class MainActivity extends ActionBarActivity {
 //        case 5:
 //            fragment = new WhatsHotFragment();
 //            break;
-// 
-//        default:
-//            break;
+ 
+        default:
+            break;
         }
  
         if (fragment != null) {
