@@ -1,4 +1,4 @@
-package com.notify.db;
+package com.notiufg.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -17,7 +17,7 @@ public class DbHelperNotificacao extends SQLiteOpenHelper {
     private static final String DATABASE_CREATE = "create table "
 		+ TABLE_NAME + "( " + ID
 		+ " integer primary key autoincrement, " + NOME_REMETENTE
-		+ " text not null, " + TEXTO + " text not null, " + DATA_ENVIO + " text not null "+");";
+		+ " text not null, " + TEXTO + " text not null, " + DATA_ENVIO + " DATETIME DEFAULT CURRENT_TIMESTAMP "+");";
     
    public DbHelperNotificacao(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);

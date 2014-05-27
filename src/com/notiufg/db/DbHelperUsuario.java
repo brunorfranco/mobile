@@ -1,4 +1,4 @@
-package com.notify.db;
+package com.notiufg.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

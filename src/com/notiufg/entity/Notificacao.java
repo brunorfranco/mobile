@@ -1,4 +1,4 @@
-package com.notify.entity;
+package com.notiufg.entity;
 
 
 public class Notificacao {

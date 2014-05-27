@@ -1,6 +1,4 @@
-package com.notify.db;
-
-import java.io.ByteArrayOutputStream;
+package com.notiufg.db;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,7 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.notify.entity.Notificacao;
+import com.notiufg.entity.Notificacao;
 
 public class DBAdapterNotificacao {
 
@@ -25,7 +23,6 @@ public class DBAdapterNotificacao {
         values.put(dbHelper.NOME_REMETENTE, nome); 
         values.put(dbHelper.TEXTO, texto); 
         values.put(dbHelper.DATA_ENVIO,dataEnvio); 
-        ByteArrayOutputStream baos = new ByteArrayOutputStream(); 
         long insertId = database.insert(dbHelper.TABLE_NAME, null, values); 
        // To show how to query 
        Cursor cursor = database.query(dbHelper.TABLE_NAME, allColumns, dbHelper.ID + " = " + 
@@ -34,14 +31,14 @@ public class DBAdapterNotificacao {
        return cursorToNotificacao(cursor); 
 	}
 	
-	private Notificacao cursorToNotificacao(Cursor cursor) { 
+	public Notificacao cursorToNotificacao(Cursor cursor) { 
 		Notificacao notificacao = new Notificacao(cursor.getLong(0),cursor.getString(1),cursor.getString(2), 
         cursor.getString(3)); 
         return notificacao; 
 	}
 	
-	public void deletaNotificacao (int idNotificacao){ 
-        database.delete(DbHelperUsuario.TABLE_NAME, DbHelperUsuario.ID + " = " + idNotificacao, null); 
+	public void deletaNotificacao (Long idNotificacao){ 
+        database.delete(DbHelperNotificacao.TABLE_NAME, DbHelperUsuario.ID + " = " + idNotificacao, null); 
 	}
 	
 	public Cursor getNotificacoes(){ 

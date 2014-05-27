@@ -1,4 +1,4 @@
-package com.notify.fragment;
+package com.notiufg.fragment;
 
 import com.example.notiufg.R;
 

@@ -1,4 +1,4 @@
-package com.notify.drawer;
+package com.notiufg.drawer;
 
 public class NavDrawerItem {
      

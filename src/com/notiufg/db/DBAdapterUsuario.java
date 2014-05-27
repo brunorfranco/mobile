@@ -1,14 +1,12 @@
-package com.notify.db;
-
-import java.io.ByteArrayOutputStream;
+package com.notiufg.db;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
 
-import com.notify.entity.Usuario;
+import com.notiufg.entity.Usuario;
 
 public class DBAdapterUsuario {
 
@@ -21,14 +19,12 @@ public class DBAdapterUsuario {
 		dbHelper = new DbHelperUsuario(context);
 	}
 	
-	public Usuario createUsuario(String nome, String cpf, String email, String telefone, Bitmap foto) { 
+	public Usuario createUsuario(String nome, String cpf, String email, String telefone) { 
         ContentValues values = new ContentValues(); 
         values.put(dbHelper.NOME, nome); 
         values.put(dbHelper.CPF, nome); 
         values.put(dbHelper.EMAIL,email); 
         values.put(dbHelper.TELEFONE,telefone); 
-        ByteArrayOutputStream baos = new ByteArrayOutputStream(); 
-        foto.compress(Bitmap.CompressFormat.PNG, 100, baos); 
         long insertId = database.insert(dbHelper.TABLE_NAME, null, values); 
        // To show how to query 
        Cursor cursor = database.query(dbHelper.TABLE_NAME, allColumns, dbHelper.ID + " = " + 
@@ -57,6 +53,13 @@ public class DBAdapterUsuario {
         idUsuario, null,null, null, null); 
         cursor.moveToFirst(); 
         return cursorToUsuario(cursor); 
+	}
+	public void open() throws SQLException {
+	    database = dbHelper.getWritableDatabase();
+	}
+	
+	public void close() {
+	    dbHelper.close();
 	}
 	
 }

@@ -23,11 +23,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.notiufg.R;
-import com.notify.db.DBAdapterNotificacao;
-import com.notify.db.DbHelperNotificacao;
-import com.notify.drawer.NavDrawerItem;
-import com.notify.drawer.NavDrawerListAdapter;
-import com.notify.fragment.HomeFragment;
+import com.notiufg.db.DBAdapterNotificacao;
+import com.notiufg.db.DbHelperNotificacao;
+import com.notiufg.drawer.NavDrawerItem;
+import com.notiufg.drawer.NavDrawerListAdapter;
+import com.notiufg.fragment.HomeFragment;
+import com.notiufg.util.CargaBancoDados;
 
 @SuppressLint("NewApi")
 public class MainActivity extends ActionBarActivity {
@@ -59,13 +60,8 @@ public class MainActivity extends ActionBarActivity {
 //					.add(R.id.container, new PlaceholderFragment()).commit();
 //		}
 		
-		DBAdapterNotificacao datasource; 
-		datasource = new DBAdapterNotificacao(this); 
-		datasource.open();
-		datasource.createNotificacao("nometeste", "textoTeste", "datateste");
-		datasource.getNotificacoes();
-		
-		datasource.close();
+		CargaBancoDados.carregaNotificacoesIniciais(this);
+		CargaBancoDados.insereUsuarioPadrao(this);
 		
 		mTitle = mDrawerTitle = getTitle();
 		 

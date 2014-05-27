@@ -7,7 +7,7 @@ import android.support.v4.widget.SimpleCursorAdapter;
 import android.widget.ListAdapter;
 
 import com.example.notiufg.R;
-import com.notify.db.DBAdapterNotificacao;
+import com.notiufg.db.DBAdapterNotificacao;
 
 public class NotificacaoActivity extends ListActivity {
 
