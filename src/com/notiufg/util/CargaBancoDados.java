@@ -43,8 +43,10 @@ public class CargaBancoDados {
 	
 	private static void carregaDadosTabelaNotificacao(DBAdapterNotificacao datasource){
 		for (int i = 0; i < 20; i++) {
-			String nome = UUID.randomUUID().toString();
-			String texto = UUID.randomUUID().toString();
+//			String nome = UUID.randomUUID().toString();
+			String nome = "Disciplina" + i;
+//			String texto = UUID.randomUUID().toString();
+			String texto = "Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste" + i;
 			datasource.createNotificacao(nome, texto, getDateTime());
 		}
 	}

@@ -7,7 +7,6 @@ import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
@@ -23,8 +22,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.notiufg.R;
-import com.notiufg.db.DBAdapterNotificacao;
-import com.notiufg.db.DbHelperNotificacao;
 import com.notiufg.drawer.NavDrawerItem;
 import com.notiufg.drawer.NavDrawerListAdapter;
 import com.notiufg.fragment.HomeFragment;
@@ -61,7 +58,7 @@ public class MainActivity extends ActionBarActivity {
 //		}
 		
 		CargaBancoDados.carregaNotificacoesIniciais(this);
-		CargaBancoDados.insereUsuarioPadrao(this);
+//		CargaBancoDados.insereUsuarioPadrao(this);
 		
 		mTitle = mDrawerTitle = getTitle();
 		 
@@ -276,5 +273,11 @@ public class MainActivity extends ActionBarActivity {
 		Intent intent = new Intent(this, NovoUsuarioActivity.class);
 	    startActivity(intent);
 	}
+	
+	public void entrar(View view) {
+		Intent intent = new Intent(this, NotificacaoActivity.class);
+	    startActivity(intent);
+	}
+	
 
 }
