@@ -3,16 +3,17 @@ package com.notiufg.util;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import java.util.UUID;
 
 import android.database.Cursor;
 
+import com.notiufg.activity.LoginActivity;
 import com.notiufg.activity.MainActivity;
 import com.notiufg.db.DBAdapterNotificacao;
 import com.notiufg.db.DBAdapterUsuario;
 import com.notiufg.entity.Notificacao;
+import com.notiufg.entity.Usuario;
 
-public class CargaBancoDados {
+public class ConectorBancoDados {
 
 	public static void carregaNotificacoesIniciais(MainActivity mainActivity){
 		DBAdapterNotificacao datasource = new DBAdapterNotificacao(mainActivity); 
@@ -23,6 +24,23 @@ public class CargaBancoDados {
 		
 		datasource.close();
 	}
+	
+	public static void dropTableNotificacoes(MainActivity mainActivity){
+		DBAdapterNotificacao datasource = new DBAdapterNotificacao(mainActivity); 
+		datasource.open();
+		
+		datasource.dropTable();
+		datasource.close();
+	}
+	
+	public static void createTableUsuario(MainActivity mainActivity){
+		DBAdapterUsuario datasource = new DBAdapterUsuario(mainActivity); 
+		datasource.open();
+		
+		datasource.createTable();
+		datasource.close();
+	}
+	
 	
 	private static String getDateTime() {
         SimpleDateFormat dateFormat = new SimpleDateFormat(
@@ -58,10 +76,25 @@ public class CargaBancoDados {
 		Cursor cursor = datasource.getUsuarios();
 		cursor.moveToFirst();
 		if (cursor.isAfterLast() != false) {
-			datasource.createUsuario("Bruno", "030.813.361-71", "bruno@teste.com", "32618888");
+			datasource.createUsuario("Bruno2", "030.813.361-71", "bruno@teste.com", "32618888", "senhateste");
 		}
 		
 		datasource.close();
+	}
+	
+	public static Boolean verificaUsuario(String login, String senha, LoginActivity mainActivity){
+		DBAdapterUsuario datasource = new DBAdapterUsuario(mainActivity); 
+		datasource.open();
+		
+		Usuario usuario = datasource.findUsuarioValido(login, senha);
+		datasource.close();
+		
+		if(usuario != null ){
+			return true;
+		} else {
+			return false;
+		}
+		
 	}
 	
 }

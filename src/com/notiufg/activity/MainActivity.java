@@ -25,7 +25,7 @@ import com.example.notiufg.R;
 import com.notiufg.drawer.NavDrawerItem;
 import com.notiufg.drawer.NavDrawerListAdapter;
 import com.notiufg.fragment.HomeFragment;
-import com.notiufg.util.CargaBancoDados;
+import com.notiufg.util.ConectorBancoDados;
 
 @SuppressLint("NewApi")
 public class MainActivity extends ActionBarActivity {
@@ -57,8 +57,9 @@ public class MainActivity extends ActionBarActivity {
 //					.add(R.id.container, new PlaceholderFragment()).commit();
 //		}
 		
-		CargaBancoDados.carregaNotificacoesIniciais(this);
-//		CargaBancoDados.insereUsuarioPadrao(this);
+		ConectorBancoDados.insereUsuarioPadrao(this);
+		ConectorBancoDados.carregaNotificacoesIniciais(this);
+		
 		
 		mTitle = mDrawerTitle = getTitle();
 		 

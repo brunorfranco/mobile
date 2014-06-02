@@ -34,6 +34,7 @@
     
     <EditText
 	    android:id="@+id/fname2"
+	    android:password="true"
 	    android:layout_width="250dip"
 	    android:layout_height="wrap_content"
 	    android:hint="@string/senha"

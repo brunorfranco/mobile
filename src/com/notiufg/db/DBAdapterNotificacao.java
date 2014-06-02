@@ -41,6 +41,10 @@ public class DBAdapterNotificacao {
         database.delete(DbHelperNotificacao.TABLE_NAME, DbHelperUsuario.ID + " = " + idNotificacao, null); 
 	}
 	
+	public void dropTable (){ 
+        database.rawQuery("drop table notificacao", null);
+	}
+	
 	public Cursor getNotificacoes(){ 
         Cursor cursor = database.rawQuery("select id, nomeRemetente, texto, dataEnvio from notificacao", null); 
         return cursor; 

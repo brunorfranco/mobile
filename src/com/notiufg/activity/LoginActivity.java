@@ -12,9 +12,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.notiufg.R;
+import com.notiufg.util.ConectorBancoDados;
 
 public class LoginActivity extends ActionBarActivity {
 
@@ -80,9 +82,24 @@ public class LoginActivity extends ActionBarActivity {
 		}
 	}
 	
+	EditText loginText;
+	EditText senhaText;
 	public void validarLogin(View view) {
-		Intent intent = new Intent(this, LoginActivity.class);
+		
+		loginText   = (EditText)findViewById(R.id.fname);
+		senhaText   = (EditText)findViewById(R.id.fname2);
+		String login = loginText.getText().toString();
+		String senha = senhaText.getText().toString();
+		
+		Intent intent = null;
+		if(ConectorBancoDados.verificaUsuario(login, senha, this)){
+			intent = new Intent(this, NotificacaoActivity.class);
+		} else {
+			intent = new Intent(this, LoginActivity.class);
+		}
+		
 	    startActivity(intent);
 	}
+	
 
 }
