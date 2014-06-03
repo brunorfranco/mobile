@@ -8,6 +8,7 @@ import android.database.Cursor;
 
 import com.notiufg.activity.LoginActivity;
 import com.notiufg.activity.MainActivity;
+import com.notiufg.db.DBAdapterGrupoEnvio;
 import com.notiufg.db.DBAdapterNotificacao;
 import com.notiufg.db.DBAdapterUsuario;
 import com.notiufg.entity.Notificacao;
@@ -21,6 +22,15 @@ public class ConectorBancoDados {
 		
 		limpaTabelaNotificacao(datasource);
 		carregaDadosTabelaNotificacao(datasource);
+		
+		datasource.close();
+	}
+	
+	public static void carregaGrupoEnvio(MainActivity mainActivity){
+		DBAdapterGrupoEnvio datasource = new DBAdapterGrupoEnvio(mainActivity); 
+		datasource.open();
+		
+		carregaDadosGrupoEnvio(datasource);
 		
 		datasource.close();
 	}
@@ -61,11 +71,19 @@ public class ConectorBancoDados {
 	
 	private static void carregaDadosTabelaNotificacao(DBAdapterNotificacao datasource){
 		for (int i = 0; i < 20; i++) {
-//			String nome = UUID.randomUUID().toString();
 			String nome = "Disciplina" + i;
-//			String texto = UUID.randomUUID().toString();
-			String texto = "Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste" + i;
-			datasource.createNotificacao(nome, texto, getDateTime());
+			String texto = "Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste "
+					+ "Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste Texto "
+					+ "Teste Texto Teste Texto Teste" + i;
+			Integer idGrupoEnvio = 1 + (int)(Math.random() * ((4 - 1) + 1));
+			datasource.createNotificacao(nome, texto, getDateTime(), idGrupoEnvio);
+		}
+	}
+	
+	private static void carregaDadosGrupoEnvio(DBAdapterGrupoEnvio datasource){
+		for (int i = 0; i < 5; i++) {
+			String nome = "Disciplina" + i;
+			datasource.createGrupoEnvio(nome, "S");
 		}
 	}
 	
@@ -96,5 +114,6 @@ public class ConectorBancoDados {
 		}
 		
 	}
+	
 	
 }

@@ -7,25 +7,20 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class DbHelperUsuario extends SQLiteOpenHelper {
+public class DbHelperGrupoEnvio extends SQLiteOpenHelper {
 	
     private static final String DATABASE_NAME = "NotiUFG.db";
-    public static final String TABLE_NAME = "usuario";
+    public static final String TABLE_NAME = "grupoEnvio";
     private static final int DATABASE_VERSION = DBUtil.versaoDB;
     public static final String ID = "id";
-    public static final String NOME = "nome";
-    public static final String CPF = "cpf";
-    public static final String EMAIL = "email";
-    public static final String TELEFONE = "telefone";
-    public static final String SENHA = "senha";
+    public static final String NOME_GRUPO = "nomeGrupo";
+    public static final String ATIVO = "ativo";
     private static final String DATABASE_CREATE = "create table "
 		+ TABLE_NAME + "( " + ID
-		+ " integer primary key autoincrement, " + NOME
-		+ " text not null, " + CPF + " text not null, " + EMAIL + " text not null, "
-		+ TELEFONE+" text not null, " + SENHA + " text not null " +
-		");";
+		+ " integer primary key autoincrement, " + NOME_GRUPO
+		+ " text not null, " + ATIVO + " text not null);";
     
-   public DbHelperUsuario(Context context) {
+   public DbHelperGrupoEnvio(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
    }
    
@@ -41,5 +36,13 @@ public class DbHelperUsuario extends SQLiteOpenHelper {
            + newVersion + ", which will destroy all old data");
           db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
           onCreate(db);
+  }
+  
+  @Override
+  public void onOpen(SQLiteDatabase db) {
+	  super.onOpen(db);
+//	  db.execSQL("drop table notificacao");
+//	  onCreate(db);
+	  
   }
 }

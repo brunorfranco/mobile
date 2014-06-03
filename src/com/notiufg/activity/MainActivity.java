@@ -59,6 +59,7 @@ public class MainActivity extends ActionBarActivity {
 		
 		ConectorBancoDados.insereUsuarioPadrao(this);
 		ConectorBancoDados.carregaNotificacoesIniciais(this);
+		ConectorBancoDados.carregaGrupoEnvio(this);
 		
 		
 		mTitle = mDrawerTitle = getTitle();

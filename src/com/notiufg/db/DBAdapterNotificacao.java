@@ -12,17 +12,19 @@ public class DBAdapterNotificacao {
 
 	private SQLiteDatabase database;
 	private DbHelperNotificacao dbHelper;
-	private String[] allColumns = { DbHelperNotificacao.ID, DbHelperNotificacao.NOME_REMETENTE, DbHelperNotificacao.TEXTO, DbHelperNotificacao.DATA_ENVIO};
+	private String[] allColumns = { DbHelperNotificacao.ID, DbHelperNotificacao.NOME_REMETENTE, 
+			DbHelperNotificacao.TEXTO, DbHelperNotificacao.DATA_ENVIO, DbHelperNotificacao.ID_GRUPO_ENVIO};
 	
 	public DBAdapterNotificacao(Context context) {          
 		dbHelper = new DbHelperNotificacao(context);
 	}
 	
-	public Notificacao createNotificacao(String nome, String texto, String dataEnvio) { 
+	public Notificacao createNotificacao(String nome, String texto, String dataEnvio, Integer idGrupoEnvio) { 
         ContentValues values = new ContentValues(); 
         values.put(dbHelper.NOME_REMETENTE, nome); 
         values.put(dbHelper.TEXTO, texto); 
         values.put(dbHelper.DATA_ENVIO,dataEnvio); 
+        values.put(dbHelper.ID_GRUPO_ENVIO,idGrupoEnvio); 
         long insertId = database.insert(dbHelper.TABLE_NAME, null, values); 
        // To show how to query 
        Cursor cursor = database.query(dbHelper.TABLE_NAME, allColumns, dbHelper.ID + " = " + 
@@ -46,7 +48,7 @@ public class DBAdapterNotificacao {
 	}
 	
 	public Cursor getNotificacoes(){ 
-        Cursor cursor = database.rawQuery("select id, nomeRemetente, texto, dataEnvio from notificacao", null); 
+        Cursor cursor = database.rawQuery("select id, nomeRemetente, texto, dataEnvio, idGrupoEnvio from notificacao", null); 
         return cursor; 
 	}
 	
