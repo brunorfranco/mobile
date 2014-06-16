@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp" >
+
+    <!-- UFG -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"        
+        android:text="UFG"
+        android:textColor="#C0C0C0"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/firstDivider"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#C0C0C0" />
+
+    <Switch
+        android:id="@+id/reitoriaView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reitoria" />
+
+    <Switch
+        android:id="@+id/proReitoriaView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pró Reitoria" />
+
+    <Switch
+        android:id="@+id/bibliotecaView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Biblioteca" />
+
+    <!-- Curso -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CURSO"
+        android:layout_marginTop="5dp"
+        android:textColor="#C0C0C0"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/firstDivider"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#C0C0C0" />
+
+    <Switch
+        android:id="@+id/coordenadorCursoView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Coordenador do curso" />
+
+    <Switch
+        android:id="@+id/direcaoUnidadeView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Direção de unidade" />
+
+    <!-- Disciplinas -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DISCIPLINAS"
+        android:layout_marginTop="5dp"
+        android:textColor="#C0C0C0"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/firstDivider"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#C0C0C0" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Matemática discreta" />
+
+    <Switch
+        android:id="@+id/switch2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Persistência" />
+
+    <Switch
+        android:id="@+id/switch3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Desenvolvimento Web" />
+
+    <Switch
+        android:id="@+id/switch4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sistemas Operacionais" />
+
+    <Switch
+        android:id="@+id/switch5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Engenharia de Software" />
+
+    <Switch
+        android:id="@+id/switch6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Integração" />
+
+</LinearLayout>

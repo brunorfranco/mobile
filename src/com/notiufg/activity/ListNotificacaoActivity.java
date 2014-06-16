@@ -14,7 +14,7 @@ import com.notiufg.adapter.NotificacaoArrayAdapter;
 import com.notiufg.db.DBAdapterNotificacao;
 import com.notiufg.entity.Notificacao;
 
-public class NotificacaoActivity extends ListActivity {
+public class ListNotificacaoActivity extends ListActivity {
 
 @Override
 public void onCreate(Bundle savedInstanceState) {

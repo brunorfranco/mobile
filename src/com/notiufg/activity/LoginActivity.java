@@ -93,7 +93,7 @@ public class LoginActivity extends ActionBarActivity {
 		
 		Intent intent = null;
 		if(ConectorBancoDados.verificaUsuario(login, senha, this)){
-			intent = new Intent(this, NotificacaoActivity.class);
+			intent = new Intent(this, ListNotificacaoActivity.class);
 		} else {
 			intent = new Intent(this, LoginActivity.class);
 		}

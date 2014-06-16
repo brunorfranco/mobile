@@ -52,4 +52,8 @@
 
     <string name="title_activity_notificacao">NotificacaoActivity</string>
 
+    <!-- Fragment -->
+    <string name="title_fragment_notifications_view">Visualizar notificações</string>
+    <string name="title_activity_notification">NotificationActivity</string>
+
 </resources>

@@ -9,6 +9,7 @@ import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -22,6 +23,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.notiufg.R;
+import com.notiufg.dialog.NotificationsViewDialog;
 import com.notiufg.drawer.NavDrawerItem;
 import com.notiufg.drawer.NavDrawerListAdapter;
 import com.notiufg.fragment.HomeFragment;
@@ -51,11 +53,6 @@ public class MainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-//		if (savedInstanceState == null) {
-//			getSupportFragmentManager().beginTransaction()
-//					.add(R.id.container, new PlaceholderFragment()).commit();
-//		}
 		
 		ConectorBancoDados.insereUsuarioPadrao(this);
 		ConectorBancoDados.carregaNotificacoesIniciais(this);
@@ -277,9 +274,12 @@ public class MainActivity extends ActionBarActivity {
 	}
 	
 	public void entrar(View view) {
-		Intent intent = new Intent(this, NotificacaoActivity.class);
+		Intent intent = new Intent(this, ListNotificacaoActivity.class);
 	    startActivity(intent);
 	}
 	
-
+	private void openSelectNotifications() {
+		DialogFragment notificationDialog = NotificationsViewDialog.newInstance();
+		notificationDialog.show(getSupportFragmentManager(), "dialog");
+	}
 }
