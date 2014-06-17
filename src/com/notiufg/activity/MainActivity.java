@@ -16,6 +16,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -278,8 +279,4 @@ public class MainActivity extends ActionBarActivity {
 	    startActivity(intent);
 	}
 	
-	private void openSelectNotifications() {
-		DialogFragment notificationDialog = NotificationsViewDialog.newInstance();
-		notificationDialog.show(getSupportFragmentManager(), "dialog");
-	}
 }

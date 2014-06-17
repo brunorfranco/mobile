@@ -1,8 +1,11 @@
 package com.notiufg.activity;
 
+import android.app.DialogFragment;
 import android.app.ListActivity;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -10,8 +13,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.notiufg.R;
 import com.notiufg.adapter.NotificacaoArrayAdapter;
 import com.notiufg.db.DBAdapterNotificacao;
+import com.notiufg.dialog.NotificationsViewDialog;
 import com.notiufg.entity.Notificacao;
 
 public class ListNotificacaoActivity extends ListActivity {
@@ -51,4 +56,33 @@ public void onCreate(Bundle savedInstanceState) {
 	});
 
 	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.activity_main_actions, menu);
+		
+		MenuItem item = menu.findItem(R.id.action_config);
+		
+		if (item == null)
+		    return true;
+		
+		item.setOnMenuItemClickListener
+		(
+		    new MenuItem.OnMenuItemClickListener () 
+		    { 
+		        public boolean onMenuItemClick(MenuItem item) {
+		        	DialogFragment notificationDialog = NotificationsViewDialog.newInstance();
+		    		notificationDialog.show(getFragmentManager(), "dialog");
+		        	return true;
+		        }
+		    } 
+		); 
+		
+		return true;
+	}
+	
+	public void onMenuItemClick(MenuItem item) {
+    	DialogFragment notificationDialog = NotificationsViewDialog.newInstance();
+		notificationDialog.show(getFragmentManager(), "dialog");
+    }
 }

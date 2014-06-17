@@ -1,6 +1,7 @@
 package com.notiufg.adapter;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,8 +34,10 @@ public class NotificacaoArrayAdapter extends ArrayAdapter<String> {
 		TextView textViewTexto = (TextView) rowView.findViewById(R.id.texto);
 		TextView textViewData = (TextView) rowView.findViewById(R.id.data);
 		textViewNome.setText(nomesArray[position]);
+		textViewNome.setPaintFlags(Paint.FAKE_BOLD_TEXT_FLAG);
 		textViewTexto.setText(textosArray[position]);
 		textViewData.setText(datasArray[position]);
+		textViewData.setPaintFlags(Paint.FAKE_BOLD_TEXT_FLAG);
  
 		// Change icon based on name
 		String s = nomesArray[position];

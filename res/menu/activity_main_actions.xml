@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
     <!-- Search / will display always -->
     <item android:id="@+id/action_config"
-          android:icon="@drawable/ic_action_paste"
+          android:icon="@drawable/paste32"
           android:title="@string/configuracoes"
           android:showAsAction="ifRoom"/>
      

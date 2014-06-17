@@ -24,7 +24,7 @@
         android:id="@+id/reitoriaView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Reitoria" />
+        android:text="Reitoria"/>
 
     <Switch
         android:id="@+id/proReitoriaView"
@@ -41,6 +41,7 @@
     <!-- Curso -->
 
     <TextView
+        android:id="@+id/curso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="CURSO"
@@ -64,7 +65,7 @@
         android:id="@+id/direcaoUnidadeView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Direção de unidade" />
+        android:text="Direção de unidade"/>
 
     <!-- Disciplinas -->
 

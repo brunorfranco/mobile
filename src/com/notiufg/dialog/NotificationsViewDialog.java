@@ -1,8 +1,8 @@
 package com.notiufg.dialog;
 
+import android.app.DialogFragment;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,12 +48,12 @@ public class NotificationsViewDialog extends DialogFragment {
 		switch6 = (Switch) view.findViewById(R.id.switch6);
 
 		mContext = view.getContext();
-
+		
 		return view;
 	}
 
 	OnCheckedChangeListener checkedChangeListener = new OnCheckedChangeListener() {
-
+		
 		@Override
 		public void onCheckedChanged(CompoundButton buttonView,
 				boolean isChecked) {
@@ -61,4 +61,5 @@ public class NotificationsViewDialog extends DialogFragment {
 					.show();
 		}
 	};
+	
 }

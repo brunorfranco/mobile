@@ -3,6 +3,7 @@ package com.notiufg.activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.notiufg.R;
+import com.notiufg.dialog.NotificationsViewDialog;
 import com.notiufg.util.ConectorBancoDados;
 
 public class LoginActivity extends ActionBarActivity {
@@ -48,7 +50,7 @@ public class LoginActivity extends ActionBarActivity {
 	    
 	    MenuInflater inflater = getMenuInflater();
 	    inflater.inflate(R.menu.activity_main_actions, menu);
-	 
+	    
 	    return super.onCreateOptionsMenu(menu);
 	    
 	}
@@ -100,6 +102,4 @@ public class LoginActivity extends ActionBarActivity {
 		
 	    startActivity(intent);
 	}
-	
-
 }
