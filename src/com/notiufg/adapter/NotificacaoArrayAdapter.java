@@ -39,11 +39,6 @@ public class NotificacaoArrayAdapter extends ArrayAdapter<String> {
 		textViewData.setText(datasArray[position]);
 		textViewData.setPaintFlags(Paint.FAKE_BOLD_TEXT_FLAG);
  
-		// Change icon based on name
-		String s = nomesArray[position];
- 
-		System.out.println(s);
- 
 		return rowView;
 	}
 }

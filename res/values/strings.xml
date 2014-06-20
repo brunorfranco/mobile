@@ -55,5 +55,6 @@
     <!-- Fragment -->
     <string name="title_fragment_notifications_view">Visualizar notificações</string>
     <string name="title_activity_notification">NotificationActivity</string>
+    <string name="title_activity_single_notification">SingleNotificationActivity</string>
 
 </resources>

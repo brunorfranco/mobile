@@ -2,22 +2,25 @@ package com.notiufg.entity;
 
 public class GrupoEnvio {
 	
-	private Long idGrupoEnvio;
+	private Long id;
 	private String nomeGrupoEnvio;
 	private String ativo;
+	//sqlite nao possui boolean ou bool, entao estou usando um int
+	private int isPublico; // 0 nao eh publico, 1 eh publico
 	
-	public GrupoEnvio(Long idGrupoEnvio, String nomeGrupoEnvio, String ativo) {
+	public GrupoEnvio(Long idGrupoEnvio, String nomeGrupoEnvio, String ativo, int isPublico) {
 		super();
-		this.idGrupoEnvio = idGrupoEnvio;
+		this.id = idGrupoEnvio;
 		this.nomeGrupoEnvio = nomeGrupoEnvio;
 		this.ativo = ativo;
+		this.isPublico = isPublico;
 	}
 	
-	public Long getIdGrupoEnvio() {
-		return idGrupoEnvio;
+	public Long getId() {
+		return id;
 	}
-	public void setIdGrupoEnvio(Long idGrupoEnvio) {
-		this.idGrupoEnvio = idGrupoEnvio;
+	public void setId(Long idGrupoEnvio) {
+		this.id = idGrupoEnvio;
 	}
 	public String getNomeGrupoEnvio() {
 		return nomeGrupoEnvio;
@@ -31,5 +34,13 @@ public class GrupoEnvio {
 	public void setAtivo(String ativo) {
 		this.ativo = ativo;
 	}
-	
+
+	public int getIsPublico() {
+		return isPublico;
+	}
+
+	public void setIsPublico(int isPublico) {
+		this.isPublico = isPublico;
+	}
+
 }

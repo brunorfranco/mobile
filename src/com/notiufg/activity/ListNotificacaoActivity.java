@@ -2,8 +2,11 @@ package com.notiufg.activity;
 
 import android.app.DialogFragment;
 import android.app.ListActivity;
+import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,15 +14,21 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.notiufg.R;
 import com.notiufg.adapter.NotificacaoArrayAdapter;
 import com.notiufg.db.DBAdapterNotificacao;
 import com.notiufg.dialog.NotificationsViewDialog;
 import com.notiufg.entity.Notificacao;
+import com.notiufg.util.VariaveisGlobais;
 
 public class ListNotificacaoActivity extends ListActivity {
+
+	ListNotificacaoActivity lista;
+	public ListNotificacaoActivity() {
+		super();
+		lista = this;
+	}
 
 @Override
 public void onCreate(Bundle savedInstanceState) {
@@ -49,9 +58,11 @@ public void onCreate(Bundle savedInstanceState) {
 	listView.setOnItemClickListener(new OnItemClickListener() {
 		public void onItemClick(AdapterView<?> parent, View view,
 				int position, long id) {
-		    // When clicked, show a toast with the TextView text
-		    Toast.makeText(getApplicationContext(),
-			((TextView) view).getText(), Toast.LENGTH_SHORT).show();
+//			VariaveisGlobais.idNotificacaoSelecionada = view.getId();
+			VariaveisGlobais.idNotificacaoSelecionada = position;
+			Intent intent = new Intent(lista, SingleNotificationActivity.class);
+		    startActivity(intent);
+		    
 		}
 	});
 

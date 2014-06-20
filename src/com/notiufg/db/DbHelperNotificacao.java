@@ -17,12 +17,14 @@ public class DbHelperNotificacao extends SQLiteOpenHelper {
     public static final String TEXTO = "texto";
     public static final String DATA_ENVIO = "dataEnvio";
     public static final String ID_GRUPO_ENVIO = "idGrupoEnvio";
+    public static final String FOILIDA = "foiLida";
     private static final String DATABASE_CREATE = "create table "
 		+ TABLE_NAME + "( " + ID
 		+ " integer primary key autoincrement, " + NOME_REMETENTE
 		+ " text not null, " + TEXTO + " text not null, " + DATA_ENVIO 
 		+ " DATETIME DEFAULT CURRENT_TIMESTAMP, "
-		+ ID_GRUPO_ENVIO + " integer not null);";
+		+ ID_GRUPO_ENVIO + " integer not null, "
+		+ FOILIDA + " integer not null);";
     
    public DbHelperNotificacao(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -47,6 +49,10 @@ public class DbHelperNotificacao extends SQLiteOpenHelper {
 	  super.onOpen(db);
 //	  db.execSQL("drop table notificacao");
 //	  onCreate(db);
+	  
+  }
+  
+  public void executeSql(String sql){
 	  
   }
 }

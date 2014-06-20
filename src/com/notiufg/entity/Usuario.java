@@ -7,15 +7,17 @@ public class Usuario {
 	private String cpf;
 	private String email;
 	private String telefone;
+	private String matricula;
 	
 	public Usuario(Long id, String nome, String cpf, String email,
-			String telefone) {
+			String telefone, String matricula) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
 		this.telefone = telefone;
+		this.matricula = matricula;
 	}
 	
 	public Long getId() {
@@ -48,6 +50,13 @@ public class Usuario {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	
+
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
 	
 }

@@ -7,14 +7,18 @@ public class Notificacao {
 	private String nomeRemetente;
 	private String texto;
 	private String dataEnvio;
+	private Long idGrupoEnvio;
+	private int foiLida; // 0 nao foi lida, 1 foi lida
 	
 	public Notificacao(Long id, String nomeRemetente, String texto,
-			String dataEnvio) {
+			String dataEnvio, Long idGrupoEnvio, int foiLida) {
 		super();
 		this.id = id;
 		this.nomeRemetente = nomeRemetente;
 		this.texto = texto;
 		this.dataEnvio = dataEnvio;
+		this.idGrupoEnvio = idGrupoEnvio;
+		this.foiLida = foiLida;
 	}
 	
 	public Long getId() {
@@ -42,6 +46,21 @@ public class Notificacao {
 	public void setDataEnvio(String dataEnvio) {
 		this.dataEnvio = dataEnvio;
 	}
-	
+
+	public Long getIdGrupoEnvio() {
+		return idGrupoEnvio;
+	}
+
+	public void setIdGrupoEnvio(Long idGrupoEnvio) {
+		this.idGrupoEnvio = idGrupoEnvio;
+	}
+
+	public int getFoiLida() {
+		return foiLida;
+	}
+
+	public void setFoiLida(int foiLida) {
+		this.foiLida = foiLida;
+	}
 	
 }

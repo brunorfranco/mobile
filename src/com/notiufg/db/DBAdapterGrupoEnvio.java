@@ -13,16 +13,17 @@ public class DBAdapterGrupoEnvio {
 	private SQLiteDatabase database;
 	private DbHelperGrupoEnvio dbHelper;
 	private String[] allColumns = { DbHelperGrupoEnvio.ID, DbHelperGrupoEnvio.NOME_GRUPO, 
-			DbHelperGrupoEnvio.ATIVO};
+			DbHelperGrupoEnvio.ATIVO, DbHelperGrupoEnvio.ISPUBLICO};
 	
 	public DBAdapterGrupoEnvio(Context context) {          
 		dbHelper = new DbHelperGrupoEnvio(context);
 	}
 	
-	public GrupoEnvio createGrupoEnvio(String nome, String ativo) { 
+	public GrupoEnvio createGrupoEnvio(String nome, String ativo, Integer isPublico) { 
         ContentValues values = new ContentValues(); 
         values.put(dbHelper.NOME_GRUPO, nome); 
         values.put(dbHelper.ATIVO, ativo); 
+        values.put(dbHelper.ISPUBLICO, isPublico); 
         long insertId = database.insert(dbHelper.TABLE_NAME, null, values); 
        // To show how to query 
        Cursor cursor = database.query(dbHelper.TABLE_NAME, allColumns, dbHelper.ID + " = " + 
@@ -32,7 +33,7 @@ public class DBAdapterGrupoEnvio {
 	}
 	
 	public GrupoEnvio cursorToGrupoEnvio(Cursor cursor) { 
-		GrupoEnvio grupoEnvio = new GrupoEnvio(cursor.getLong(0),cursor.getString(1),cursor.getString(2)); 
+		GrupoEnvio grupoEnvio = new GrupoEnvio(cursor.getLong(0),cursor.getString(1),cursor.getString(2), cursor.getInt(3)); 
         return grupoEnvio; 
 	}
 	
@@ -58,6 +59,10 @@ public class DBAdapterGrupoEnvio {
 	
 	public void close() {
 	    dbHelper.close();
+	}
+	
+	public void atualizaTabela(){
+		dbHelper.onUpgrade(database, 5, 6);
 	}
 	
 }

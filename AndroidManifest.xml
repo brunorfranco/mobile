@@ -46,6 +46,10 @@
             android:name="com.example.notiufg.NotificationActivity"
             android:label="@string/title_activity_notification" >
         </activity>
+        <activity
+            android:name="com.notiufg.activity.SingleNotificationActivity"
+            android:label="@string/title_activity_single_notification" >
+        </activity>
     </application>
 
 </manifest>
