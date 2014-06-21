@@ -1,4 +1,4 @@
-package com.notiufg.db;
+package com.notiufg.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -59,7 +59,7 @@ public class DBAdapterNotificacao {
         return cursor; 
 	}
 	
-	public Notificacao getNotificacao (int idNotificacao){ 
+	public Notificacao getNotificacao (Long idNotificacao){ 
         Cursor cursor = database.query(dbHelper.TABLE_NAME, allColumns, dbHelper.ID + " = " + 
         idNotificacao, null,null, null, null); 
         cursor.moveToFirst(); 
@@ -76,6 +76,14 @@ public class DBAdapterNotificacao {
 	
 	public void atualizaTabela(){
 		dbHelper.onUpgrade(database, 5, 6);
+	}
+	
+	public void marcaComoNaoLida (Long idNotificacao){ 
+        database.rawQuery("update notificacao set foiLida = 0 where id = " + idNotificacao, null);
+	}
+	
+	public void marcaComoLida (Long idNotificacao){ 
+        database.rawQuery("update notificacao set foiLida = 1 where id = " + idNotificacao, null);
 	}
 	
 }

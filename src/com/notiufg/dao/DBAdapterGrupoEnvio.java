@@ -1,4 +1,4 @@
-package com.notiufg.db;
+package com.notiufg.dao;
 
 import android.content.ContentValues;
 import android.content.Context;

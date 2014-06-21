@@ -5,9 +5,17 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/txtGrupo"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:textSize="20dp"
+        android:layout_gravity="left"/>
+    
+    <TextView
         android:id="@+id/txtNotificacao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_centerInParent="true"
         android:textSize="16dp"
         android:layout_gravity="center"/>
@@ -16,14 +24,14 @@
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:text="Excluir"
-	    android:onClick="login" 
+	    android:onClick="excluir" 
 	    android:layout_gravity="center"/>
     
     <Button
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:text="Marcar como não lida"
-	    android:onClick="login" 
+	    android:onClick="marcarComoNaoLida" 
 	    android:layout_gravity="center"/>
 
 </LinearLayout>

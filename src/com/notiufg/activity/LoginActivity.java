@@ -3,7 +3,6 @@ package com.notiufg.activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
@@ -17,8 +16,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.notiufg.R;
-import com.notiufg.dialog.NotificationsViewDialog;
-import com.notiufg.util.ConectorBancoDados;
+import com.notiufg.entity.Usuario;
+import com.notiufg.util.CargaBancoDados;
+import com.notiufg.util.VariaveisGlobais;
 
 public class LoginActivity extends ActionBarActivity {
 
@@ -94,7 +94,9 @@ public class LoginActivity extends ActionBarActivity {
 		String senha = senhaText.getText().toString();
 		
 		Intent intent = null;
-		if(ConectorBancoDados.verificaUsuario(login, senha, this)){
+		if(CargaBancoDados.verificaUsuario(login, senha, this)){
+			Usuario usuario = CargaBancoDados.findUsuario(login, senha, this);
+			VariaveisGlobais.usuarioLogado = usuario;
 			intent = new Intent(this, ListNotificacaoActivity.class);
 		} else {
 			intent = new Intent(this, LoginActivity.class);

@@ -12,6 +12,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.notiufg.R;
+import com.notiufg.util.VariaveisGlobais;
 
 public class NotificationsViewDialog extends DialogFragment {
 	Switch switch1;
@@ -35,21 +36,48 @@ public class NotificationsViewDialog extends DialogFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		getDialog().setTitle(R.string.title_fragment_notifications_view);
-
-		View view = inflater.inflate(R.layout.fragment_notifications_dialog,
-				container, true);
-
-		switch1 = (Switch) view.findViewById(R.id.switch1);
-		switch2 = (Switch) view.findViewById(R.id.switch2);
-		switch3 = (Switch) view.findViewById(R.id.switch3);
-		switch4 = (Switch) view.findViewById(R.id.switch4);
-		switch5 = (Switch) view.findViewById(R.id.switch5);
-		switch6 = (Switch) view.findViewById(R.id.switch6);
-
-		mContext = view.getContext();
 		
-		return view;
+		if(VariaveisGlobais.usuarioLogado == null){
+			getDialog().setTitle(R.string.title_fragment_notifications_view);
+
+			View view = inflater.inflate(R.layout.fragment_usuario_deslogado,
+					container, true);
+			return view;
+		} else {
+			getDialog().setTitle(R.string.title_fragment_notifications_view);
+	
+			View view = inflater.inflate(R.layout.fragment_notifications_dialog,
+					container, true);
+	
+			switch1 = (Switch) view.findViewById(R.id.switch1);
+			
+			switch1.setChecked(true);
+			
+			switch1.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+				 
+				   @Override
+				   public void onCheckedChanged(CompoundButton buttonView,
+				     boolean isChecked) {
+				 
+				    if(isChecked){
+				    	System.out.println("Switch is currently ON");
+				    }else{
+				    	System.out.println("Switch is currently OFF");
+				    }
+				 
+				   }
+				  });
+			
+			switch2 = (Switch) view.findViewById(R.id.switch2);
+			switch3 = (Switch) view.findViewById(R.id.switch3);
+			switch4 = (Switch) view.findViewById(R.id.switch4);
+			switch5 = (Switch) view.findViewById(R.id.switch5);
+			switch6 = (Switch) view.findViewById(R.id.switch6);
+	
+			mContext = view.getContext();
+			return view;
+		}
+		
 	}
 
 	OnCheckedChangeListener checkedChangeListener = new OnCheckedChangeListener() {

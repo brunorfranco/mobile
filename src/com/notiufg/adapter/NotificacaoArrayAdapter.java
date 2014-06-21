@@ -1,5 +1,7 @@
 package com.notiufg.adapter;
 
+import java.math.BigDecimal;
+
 import android.content.Context;
 import android.graphics.Paint;
 import android.view.LayoutInflater;
@@ -12,13 +14,15 @@ import com.example.notiufg.R;
 
 public class NotificacaoArrayAdapter extends ArrayAdapter<String> {
 	private final Context context;
+	private final Long[] ids;
 	private final String[] nomesArray;
 	private final String[] textosArray;
 	private final String[] datasArray;
  
-	public NotificacaoArrayAdapter(Context context, String[] nomes, String[] textos, String[] datas) {
+	public NotificacaoArrayAdapter(Context context, Long[] ids, String[] nomes, String[] textos, String[] datas) {
 		super(context, R.layout.list_notificacao, nomes);
 		this.context = context;
+		this.ids = ids;
 		this.nomesArray = nomes;
 		this.textosArray = textos;
 		this.datasArray = datas;
@@ -38,6 +42,9 @@ public class NotificacaoArrayAdapter extends ArrayAdapter<String> {
 		textViewTexto.setText(textosArray[position]);
 		textViewData.setText(datasArray[position]);
 		textViewData.setPaintFlags(Paint.FAKE_BOLD_TEXT_FLAG);
+		
+		int anInt = new BigDecimal(ids[position]).intValueExact();
+		rowView.setId(anInt);
  
 		return rowView;
 	}

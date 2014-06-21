@@ -28,7 +28,7 @@ import com.notiufg.dialog.NotificationsViewDialog;
 import com.notiufg.drawer.NavDrawerItem;
 import com.notiufg.drawer.NavDrawerListAdapter;
 import com.notiufg.fragment.HomeFragment;
-import com.notiufg.util.ConectorBancoDados;
+import com.notiufg.util.CargaBancoDados;
 
 @SuppressLint("NewApi")
 public class MainActivity extends ActionBarActivity {
@@ -56,7 +56,7 @@ public class MainActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_main);
 		
 //		ConectorBancoDados.insereUsuarioPadrao(this);
-//		ConectorBancoDados.carregaNotificacoesIniciais(this);
+		CargaBancoDados.carregaNotificacoesIniciais(this);
 //		ConectorBancoDados.carregaGrupoEnvio(this);
 		
 		

@@ -1,6 +1,9 @@
 package com.notiufg.util;
 
+import com.notiufg.entity.Usuario;
+
 public class VariaveisGlobais {
 
-	public static int idNotificacaoSelecionada;
+	public static Long idNotificacaoSelecionada;
+	public static Usuario usuarioLogado;
 }

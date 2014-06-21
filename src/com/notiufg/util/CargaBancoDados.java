@@ -9,13 +9,13 @@ import android.database.Cursor;
 
 import com.notiufg.activity.LoginActivity;
 import com.notiufg.activity.MainActivity;
-import com.notiufg.db.DBAdapterGrupoEnvio;
-import com.notiufg.db.DBAdapterNotificacao;
-import com.notiufg.db.DBAdapterUsuario;
+import com.notiufg.dao.DBAdapterGrupoEnvio;
+import com.notiufg.dao.DBAdapterNotificacao;
+import com.notiufg.dao.DBAdapterUsuario;
 import com.notiufg.entity.Notificacao;
 import com.notiufg.entity.Usuario;
 
-public class ConectorBancoDados {
+public class CargaBancoDados {
 
 	public static void carregaNotificacoesIniciais(MainActivity mainActivity){
 		DBAdapterNotificacao datasource = new DBAdapterNotificacao(mainActivity); 
@@ -86,7 +86,7 @@ public class ConectorBancoDados {
 	}
 	
 	private static void carregaDadosGrupoEnvio(DBAdapterGrupoEnvio datasource){
-		datasource.atualizaTabela();
+//		datasource.atualizaTabela();
 		for (int i = 0; i < 5; i++) {
 			String nome = "Disciplina" + i;
 			Random rand=new Random();
@@ -122,6 +122,17 @@ public class ConectorBancoDados {
 		} else {
 			return false;
 		}
+		
+	}
+	
+	public static Usuario findUsuario(String login, String senha, LoginActivity mainActivity){
+		DBAdapterUsuario datasource = new DBAdapterUsuario(mainActivity); 
+		datasource.open();
+		
+		Usuario usuario = datasource.findUsuarioValido(login, senha);
+		datasource.close();
+		
+		return usuario;
 		
 	}
 	

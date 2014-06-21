@@ -1102,12 +1102,12 @@ containing a value of this type.
         public static final int action_bar_root=0x7f05001a;
         public static final int action_bar_subtitle=0x7f050023;
         public static final int action_bar_title=0x7f050022;
-        public static final int action_config=0x7f05006d;
+        public static final int action_config=0x7f05006e;
         public static final int action_context_bar=0x7f05001d;
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f05006e;
+        public static final int action_settings=0x7f05006f;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
@@ -1120,7 +1120,7 @@ containing a value of this type.
         public static final int coordenadorCursoView=0x7f05005a;
         public static final int counter=0x7f050041;
         public static final int curso=0x7f050059;
-        public static final int data=0x7f05006b;
+        public static final int data=0x7f05006c;
         public static final int default_activity_button=0x7f050028;
         public static final int dialog=0x7f05000e;
         public static final int direcaoUnidadeView=0x7f05005b;
@@ -1144,7 +1144,7 @@ containing a value of this type.
         public static final int icon=0x7f05002a;
         public static final int ifRoom=0x7f05000a;
         public static final int image=0x7f050027;
-        public static final int label=0x7f05006a;
+        public static final int label=0x7f05006b;
         public static final int linearLayout1=0x7f050066;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f050029;
@@ -1152,7 +1152,7 @@ containing a value of this type.
         public static final int listview=0x7f05003d;
         public static final int middle=0x7f050012;
         public static final int never=0x7f050009;
-        public static final int nome=0x7f050069;
+        public static final int nome=0x7f05006a;
         public static final int none=0x7f050010;
         public static final int normal=0x7f050000;
         public static final int proReitoriaView=0x7f050057;
@@ -1195,13 +1195,14 @@ containing a value of this type.
         public static final int textView7=0x7f050047;
         public static final int textView8=0x7f050048;
         public static final int textView9=0x7f050049;
-        public static final int texto=0x7f05006c;
+        public static final int texto=0x7f05006d;
         public static final int textviewdatefornocallspage=0x7f05004e;
         public static final int textviewdatefornocallspage2=0x7f05004f;
         public static final int title=0x7f05002b;
         public static final int top_action_bar=0x7f050020;
+        public static final int txtGrupo=0x7f050068;
         public static final int txtLabel=0x7f05004c;
-        public static final int txtNotificacao=0x7f050068;
+        public static final int txtNotificacao=0x7f050069;
         public static final int up=0x7f050021;
         public static final int useLogo=0x7f050003;
         public static final int withText=0x7f05000c;
@@ -1275,8 +1276,9 @@ containing a value of this type.
         public static final int fragment_notifications_dialog=0x7f030028;
         public static final int fragment_novo_usuario=0x7f030029;
         public static final int fragment_single_notification=0x7f03002a;
-        public static final int list_notificacao=0x7f03002b;
-        public static final int support_simple_spinner_dropdown_item=0x7f03002c;
+        public static final int fragment_usuario_deslogado=0x7f03002b;
+        public static final int list_notificacao=0x7f03002c;
+        public static final int support_simple_spinner_dropdown_item=0x7f03002d;
     }
     public static final class menu {
         public static final int activity_main_actions=0x7f0d0000;

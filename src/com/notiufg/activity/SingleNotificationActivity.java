@@ -4,11 +4,15 @@ import com.example.notiufg.R;
 import com.example.notiufg.R.id;
 import com.example.notiufg.R.layout;
 import com.example.notiufg.R.menu;
+import com.notiufg.dao.DBAdapterNotificacao;
+import com.notiufg.entity.Notificacao;
 import com.notiufg.util.VariaveisGlobais;
 
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,6 +23,13 @@ import android.widget.TextView;
 import android.os.Build;
 
 public class SingleNotificationActivity extends Activity {
+
+	static SingleNotificationActivity activity;
+	
+	public SingleNotificationActivity() {
+		super();
+		activity = this;
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,11 +76,47 @@ public class SingleNotificationActivity extends Activity {
 			View rootView = inflater.inflate(
 					R.layout.fragment_single_notification, container, false);
 			
-			int teste = VariaveisGlobais.idNotificacaoSelecionada;
+			Long idNotificacaoSelecionada = VariaveisGlobais.idNotificacaoSelecionada;
+			
+			DBAdapterNotificacao datasource = new DBAdapterNotificacao(activity); 
+			datasource.open();
+			
+			Notificacao notificacao = datasource.getNotificacao(idNotificacaoSelecionada);
+			datasource.close();
+			
 			TextView textViewNotificacao = (TextView) rootView.findViewById(R.id.txtNotificacao);
-			textViewNotificacao.setText("testando essa loucura");
+			textViewNotificacao.setText(notificacao.getTexto());
+			
+			TextView textViewGrupo= (TextView) rootView.findViewById(R.id.txtGrupo);
+			textViewGrupo.setText(notificacao.getNomeRemetente());
+			textViewGrupo.setPaintFlags(Paint.FAKE_BOLD_TEXT_FLAG);
+			
 			return rootView;
 		}
+	}
+	
+	public void excluir(View view) {
+		Long idNotificacaoSelecionada = VariaveisGlobais.idNotificacaoSelecionada;
+		DBAdapterNotificacao datasource = new DBAdapterNotificacao(activity); 
+		datasource.open();
+		
+		datasource.deletaNotificacao(idNotificacaoSelecionada);;
+		datasource.close();
+		
+		Intent intent = new Intent(this, ListNotificacaoActivity.class);
+	    startActivity(intent);
+	}
+	
+	public void marcarComoNaoLida(View view) {
+		Long idNotificacaoSelecionada = VariaveisGlobais.idNotificacaoSelecionada;
+		DBAdapterNotificacao datasource = new DBAdapterNotificacao(activity); 
+		datasource.open();
+		
+		datasource.marcaComoNaoLida(idNotificacaoSelecionada);;
+		datasource.close();
+		
+		Intent intent = new Intent(this, ListNotificacaoActivity.class);
+	    startActivity(intent);
 	}
 
 }
