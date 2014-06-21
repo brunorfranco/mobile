@@ -39,7 +39,9 @@
         android:layout_marginLeft="10px"
 	    android:layout_marginRight="10px"
         android:text="@+id/label"
-        android:textSize="20px" >
+        android:textSize="20px"
+        android:autoLink="web"
+        android:linksClickable="true" >
     </TextView>
  
 </LinearLayout>

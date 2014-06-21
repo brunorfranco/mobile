@@ -77,7 +77,7 @@ public class CargaBancoDados {
 	private static void carregaDadosTabelaNotificacao(DBAdapterNotificacao datasource){
 		for (int i = 0; i < 20; i++) {
 			String nome = "Disciplina" + i;
-			String texto = "Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste "
+			String texto = "www.google.com.br Texto Teste Texto Teste Texto Teste "
 					+ "Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste Texto "
 					+ "Teste Texto Teste Texto Teste" + i;
 			Integer idGrupoEnvio = 1 + (int)(Math.random() * ((4 - 1) + 1));
