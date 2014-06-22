@@ -8,9 +8,10 @@ public class Usuario {
 	private String email;
 	private String telefone;
 	private String matricula;
+	private Long idCurso;
 	
 	public Usuario(Long id, String nome, String cpf, String email,
-			String telefone, String matricula) {
+			String telefone, String matricula, Long idCurso) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -18,6 +19,7 @@ public class Usuario {
 		this.email = email;
 		this.telefone = telefone;
 		this.matricula = matricula;
+		this.idCurso = idCurso;
 	}
 	
 	public Long getId() {
@@ -58,5 +60,12 @@ public class Usuario {
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
-	
+
+	public Long getIdCurso() {
+		return idCurso;
+	}
+
+	public void setIdCurso(Long idCurso) {
+		this.idCurso = idCurso;
+	}
 }

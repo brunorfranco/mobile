@@ -13,14 +13,14 @@ public class DBAdapterUsuario {
 	private SQLiteDatabase database;
 	private DbHelperUsuario dbHelper;
 	private String[] allColumns = { DbHelperUsuario.ID, DbHelperUsuario.NOME, dbHelper.CPF, DbHelperUsuario.EMAIL,
-	DbHelperUsuario.TELEFONE, DbHelperUsuario.SENHA, DbHelperUsuario.MATRICULA};
+	DbHelperUsuario.TELEFONE, DbHelperUsuario.SENHA, DbHelperUsuario.MATRICULA, DbHelperUsuario.IDCURSO};
 	
 	public DBAdapterUsuario(Context context) {          
 		dbHelper = new DbHelperUsuario(context);
 	}
 	
 	public Usuario createUsuario(String nome, String cpf, String email, String telefone,
-			String senha, String matricula) { 
+			String senha, String matricula, Long idCurso) { 
         ContentValues values = new ContentValues(); 
         values.put(dbHelper.NOME, nome); 
         values.put(dbHelper.CPF, nome); 
@@ -28,6 +28,7 @@ public class DBAdapterUsuario {
         values.put(dbHelper.TELEFONE,telefone); 
         values.put(dbHelper.SENHA,senha); 
         values.put(dbHelper.MATRICULA,matricula); 
+        values.put(dbHelper.IDCURSO,idCurso); 
         long insertId = database.insert(dbHelper.TABLE_NAME, null, values); 
        // To show how to query 
        Cursor cursor = database.query(dbHelper.TABLE_NAME, allColumns, dbHelper.ID + " = " + 
@@ -41,7 +42,7 @@ public class DBAdapterUsuario {
 		
 		try {
 			contacto = new Usuario(cursor.getLong(0),cursor.getString(1),cursor.getString(2), 
-			cursor.getString(3),cursor.getString(4), cursor.getString(5));
+			cursor.getString(3),cursor.getString(4), cursor.getString(5), cursor.getLong(6));
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
@@ -53,7 +54,7 @@ public class DBAdapterUsuario {
 	}
 	
 	public Cursor getUsuarios(){ 
-        Cursor cursor = database.rawQuery("select id, nome, cpf, telefone, senha from usuario", null); 
+        Cursor cursor = database.rawQuery("select id, nome, cpf, telefone, senha, matricula, idCurso from usuario", null); 
         return cursor; 
 	}
 	
@@ -73,7 +74,8 @@ public class DBAdapterUsuario {
 	
 	public void createTable(){
 		database.rawQuery("create table usuario (id integer primary key autoincrement, nome text not null,"
-				+ " cpf text not null, email text not null, telefone text not null, senha text not null, matricula text not null);", null); 
+				+ " cpf text not null, email text not null, telefone text not null, senha text not null,"
+				+ " matricula text not null, idCurso integer not null);", null); 
 	}
 	
 	public Usuario findUsuarioValido (String login, String senha){ 
@@ -85,7 +87,7 @@ public class DBAdapterUsuario {
 	}
 	
 	public void atualizaTabela(){
-		dbHelper.onUpgrade(database, 5, 6);
+		dbHelper.onUpgrade(database, 6, 7);
 	}
 	
 }

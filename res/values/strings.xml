@@ -17,6 +17,8 @@
     <string name="email">E-mail:</string>
     <string name="telefone">Telefone:</string>
     <string name="cpf">CPF:</string>
+    <string name="senha2">Senha:</string>
+    <string name="confirmarSenha">Confirmar Senha:</string>
     <string name="adiconar">Adicionar</string>
     <string name="configuracoes">Configurações</string>
     <string name="title_activity_menu">MenuActivity</string>
@@ -31,6 +33,8 @@
     <string name="dsp">DSP</string>
     <string name="dsw">DSW</string>
     <string name="mobile">Mobile</string>
+    <string name="matricula">Matricula:</string>
+    <string name="cursos_prompt">Choose a country</string>
 
     <string-array name="nav_drawer_items">
         <item>Home</item>
@@ -39,6 +43,13 @@
         <item>Communities</item>
         <item>Pages</item>
         <item>What\'s Hot</item>
+    </string-array>
+    
+    <string-array name="cursos_arrays">
+        <item>Engenharia de Software</item>
+        <item>Ciencia da Computacao</item>
+        <item>Letras</item>
+        <item>Engenharia Civil</item>
     </string-array>
 
     <array name="nav_drawer_icons">

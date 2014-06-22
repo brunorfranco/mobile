@@ -9,9 +9,11 @@ import android.database.Cursor;
 
 import com.notiufg.activity.LoginActivity;
 import com.notiufg.activity.MainActivity;
+import com.notiufg.dao.DBAdapterCurso;
 import com.notiufg.dao.DBAdapterGrupoEnvio;
 import com.notiufg.dao.DBAdapterNotificacao;
 import com.notiufg.dao.DBAdapterUsuario;
+import com.notiufg.entity.Curso;
 import com.notiufg.entity.GrupoEnvio;
 import com.notiufg.entity.Notificacao;
 import com.notiufg.entity.Usuario;
@@ -34,6 +36,16 @@ public class CargaBancoDados {
 		
 		limpaDadosGrupoEnvio(datasource);
 		carregaDadosGrupoEnvioReal(datasource);
+		
+		datasource.close();
+	}
+	
+	public static void carregaCursosIniciais(MainActivity mainActivity){
+		DBAdapterCurso datasource = new DBAdapterCurso(mainActivity); 
+		datasource.open();
+
+//		limpaTabelaCursos(datasource);
+		carregaDadosTabelaCurso(datasource);
 		
 		datasource.close();
 	}
@@ -72,6 +84,20 @@ public class CargaBancoDados {
 		while (cursor.isAfterLast() == false) {
 			Notificacao noti = datasource.cursorToNotificacao(cursor);
 			datasource.deletaNotificacao(noti.getId());
+		    cursor.moveToNext();
+		}
+	}
+	
+	private static void limpaTabelaCursos(DBAdapterCurso datasource){
+//		datasource.dropTable();
+//		datasource.deleteFromTable();
+		datasource.open();
+//		datasource.atualizaTabela();
+		Cursor cursor = datasource.getCursos();
+		cursor.moveToFirst();
+		while (cursor.isAfterLast() == false) {
+			Curso curso = datasource.cursorToCurso(cursor);
+			datasource.deletaCurso(Long.valueOf(curso.getId()));
 		    cursor.moveToNext();
 		}
 	}
@@ -133,6 +159,15 @@ public class CargaBancoDados {
 		datasource.createGrupoEnvio("Integracao", "S",0);
 	}
 	
+	private static void carregaDadosTabelaCurso(DBAdapterCurso datasource){
+//		datasource.atualizaTabela();
+//		datasource.createTable();
+		datasource.createCurso("Engenharia de Software");
+		datasource.createCurso("Ciencia da Computacao");
+		datasource.createCurso("Letras");
+		datasource.createCurso("Engenharia Civil");
+	}
+	
 	public static void insereUsuarioPadrao(MainActivity mainActivity){
 		DBAdapterUsuario datasource = new DBAdapterUsuario(mainActivity); 
 		datasource.open();
@@ -142,7 +177,7 @@ public class CargaBancoDados {
 		cursor.moveToFirst();
 		if (cursor.isAfterLast() != false) {
 			datasource.createUsuario("Bruno", "030.813.361-71", "bruno@teste.com", 
-					"32618888", "senhateste", "071750");
+					"32618888", "senhateste", "071750", 1l);
 		}
 		
 		datasource.close();

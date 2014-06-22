@@ -8,11 +8,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Spinner;
 
 import com.example.notiufg.R;
+import com.notiufg.listener.CustomOnItemSelectedListener;
 
 public class NovoUsuarioActivity extends ActionBarActivity {
 
+	private Spinner spinner1;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -22,8 +25,15 @@ public class NovoUsuarioActivity extends ActionBarActivity {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+		
+//		addListenerOnSpinnerItemSelection();
 	}
 
+	public void addListenerOnSpinnerItemSelection() {
+		spinner1 = (Spinner) findViewById(R.id.spinner1);
+		spinner1.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+	 }
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
