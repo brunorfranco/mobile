@@ -12,6 +12,7 @@ import com.notiufg.activity.MainActivity;
 import com.notiufg.dao.DBAdapterGrupoEnvio;
 import com.notiufg.dao.DBAdapterNotificacao;
 import com.notiufg.dao.DBAdapterUsuario;
+import com.notiufg.entity.GrupoEnvio;
 import com.notiufg.entity.Notificacao;
 import com.notiufg.entity.Usuario;
 
@@ -22,7 +23,7 @@ public class CargaBancoDados {
 		datasource.open();
 
 		limpaTabelaNotificacao(datasource);
-		carregaDadosTabelaNotificacao(datasource);
+		carregaDadosTabelaNotificacao(datasource, mainActivity);
 		
 		datasource.close();
 	}
@@ -31,7 +32,8 @@ public class CargaBancoDados {
 		DBAdapterGrupoEnvio datasource = new DBAdapterGrupoEnvio(mainActivity); 
 		datasource.open();
 		
-		carregaDadosGrupoEnvio(datasource);
+		limpaDadosGrupoEnvio(datasource);
+		carregaDadosGrupoEnvioReal(datasource);
 		
 		datasource.close();
 	}
@@ -74,18 +76,34 @@ public class CargaBancoDados {
 		}
 	}
 	
-	private static void carregaDadosTabelaNotificacao(DBAdapterNotificacao datasource){
-		for (int i = 0; i < 20; i++) {
-			String nome = "Disciplina" + i;
-			String texto = "www.google.com.br Texto Teste Texto Teste Texto Teste "
-					+ "Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste Texto "
-					+ "Teste Texto Teste Texto Teste" + i;
-			Integer idGrupoEnvio = 1 + (int)(Math.random() * ((4 - 1) + 1));
-			datasource.createNotificacao(nome, texto, getDateTime(), idGrupoEnvio, 0);
+	private static void limpaDadosGrupoEnvio(DBAdapterGrupoEnvio datasource){
+		datasource.open();
+//		datasource.atualizaTabela();
+		Cursor cursor = datasource.getGruposEnvio();
+		cursor.moveToFirst();
+		while (cursor.isAfterLast() == false) {
+			GrupoEnvio grupo = datasource.cursorToGrupoEnvio(cursor);
+			datasource.deletaGrupoEnvio(grupo.getId());
+		    cursor.moveToNext();
 		}
 	}
 	
-	private static void carregaDadosGrupoEnvio(DBAdapterGrupoEnvio datasource){
+	private static void carregaDadosTabelaNotificacao(DBAdapterNotificacao datasource, MainActivity mainActivity){
+		for (int i = 0; i < 20; i++) {
+			String texto = "www.google.com.br Texto Teste Texto Teste Texto Teste "
+					+ "Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste Texto "
+					+ "Teste Texto Teste Texto Teste" + i;
+			Integer idGrupoEnvio = 1 + (int)(Math.random() * ((11 - 1) + 1));
+			
+			DBAdapterGrupoEnvio datasourceGrupo = new DBAdapterGrupoEnvio(mainActivity); 
+			datasourceGrupo.open();
+			GrupoEnvio grupo = datasourceGrupo.getGrupoEnvio(idGrupoEnvio);
+			
+			datasource.createNotificacao(grupo.getNomeGrupoEnvio(), texto, getDateTime(), idGrupoEnvio, 0);
+		}
+	}
+	
+	private static void carregaDadosGrupoEnvioRandomico(DBAdapterGrupoEnvio datasource){
 //		datasource.atualizaTabela();
 		for (int i = 0; i < 5; i++) {
 			String nome = "Disciplina" + i;
@@ -93,6 +111,26 @@ public class CargaBancoDados {
 			int isPublico = rand.nextInt(1);
 			datasource.createGrupoEnvio(nome, "S",isPublico);
 		}
+	}
+	
+	private static void carregaDadosGrupoEnvioReal(DBAdapterGrupoEnvio datasource){
+//		datasource.atualizaTabela();
+		//UFG
+		datasource.createGrupoEnvio("Reitoria", "S",1);
+		datasource.createGrupoEnvio("Pro Reitoria", "S",1);
+		datasource.createGrupoEnvio("Biblioteca", "S",1);
+		
+		//CURSO
+		datasource.createGrupoEnvio("Coordenador de Curso", "S",0);
+		datasource.createGrupoEnvio("Direcao de unidade", "S",0);
+		
+		//DISCIPLINAS
+		datasource.createGrupoEnvio("Matematica Discreta", "S",0);
+		datasource.createGrupoEnvio("Persistencia", "S",0);
+		datasource.createGrupoEnvio("Desenvolvimento para Web", "S",0);
+		datasource.createGrupoEnvio("Sistemas Operacionais", "S",0);
+		datasource.createGrupoEnvio("Engenharia de Software", "S",0);
+		datasource.createGrupoEnvio("Integracao", "S",0);
 	}
 	
 	public static void insereUsuarioPadrao(MainActivity mainActivity){

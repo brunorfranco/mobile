@@ -55,9 +55,9 @@ public class MainActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+//		CargaBancoDados.carregaGrupoEnvio(this);
 //		ConectorBancoDados.insereUsuarioPadrao(this);
-		CargaBancoDados.carregaNotificacoesIniciais(this);
-//		ConectorBancoDados.carregaGrupoEnvio(this);
+//		CargaBancoDados.carregaNotificacoesIniciais(this);
 		
 		
 		mTitle = mDrawerTitle = getTitle();

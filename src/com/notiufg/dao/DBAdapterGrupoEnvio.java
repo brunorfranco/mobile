@@ -65,4 +65,8 @@ public class DBAdapterGrupoEnvio {
 		dbHelper.onUpgrade(database, 5, 6);
 	}
 	
+	public void deletaGrupoEnvio (Long idGrupo){ 
+        database.delete(DbHelperGrupoEnvio.TABLE_NAME, DbHelperGrupoEnvio.ID + " = " + idGrupo, null); 
+	}
+	
 }
