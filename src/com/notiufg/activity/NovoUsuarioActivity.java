@@ -8,9 +8,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.notiufg.R;
+import com.notiufg.dao.DBAdapterUsuario;
 import com.notiufg.listener.CustomOnItemSelectedListener;
 
 public class NovoUsuarioActivity extends ActionBarActivity {
@@ -70,5 +73,65 @@ public class NovoUsuarioActivity extends ActionBarActivity {
 			return rootView;
 		}
 	}
-
+	
+	public void cadastrar(View view) {
+		spinner1 = (Spinner) findViewById(R.id.spinner1);
+		String curso = String.valueOf(spinner1.getSelectedItem());
+		
+		EditText nome   = (EditText)findViewById(R.id.ednome);
+		EditText cpf   = (EditText)findViewById(R.id.edcpf);
+		EditText email   = (EditText)findViewById(R.id.edEmail);
+		EditText telefone   = (EditText)findViewById(R.id.edTelefone);
+		EditText matricula   = (EditText)findViewById(R.id.edMatricula);
+		EditText senha   = (EditText)findViewById(R.id.edSenha);
+		EditText senhaConfirmada   = (EditText)findViewById(R.id.edConfirmarSenha);
+		
+		String nomeStr = nome.getText().toString();
+		String cpfStr = cpf.getText().toString();
+		String emailStr = email.getText().toString();
+		String telefoneStr = telefone.getText().toString();
+		String matriculaStr = matricula.getText().toString();
+		String senhaStr = senha.getText().toString();
+		String senhaConfirmadaStr = senhaConfirmada.getText().toString();
+		
+		Long idCurso = getIdCurso(curso);
+		
+		
+		//validarSenha
+		if(!senhaStr.equalsIgnoreCase(senhaConfirmadaStr)){
+			Toast.makeText(this, "Senhas diferentes, confira as senhas.", Toast.LENGTH_LONG).show();
+			return;
+		}
+		
+		DBAdapterUsuario datasource = new DBAdapterUsuario(this); 
+		datasource.open();
+		datasource.createUsuario(nomeStr, cpfStr, emailStr, 
+				telefoneStr, senhaStr, matriculaStr, idCurso);
+		datasource.close();
+		
+		Toast.makeText(this, "Usuario criado com sucesso!", Toast.LENGTH_LONG).show();
+		
+//		limparCampos
+		nome.setText("");
+		cpf.setText("");
+		email.setText("");
+		telefone.setText("");
+		matricula.setText("");
+		senha.setText("");
+		senhaConfirmada.setText("");
+	}
+	
+	private Long getIdCurso(String curso){
+		if(curso.contains("Engenharia de Software")){
+			return 1l;
+		} else if (curso.contains("Ciencia da Computacao")){
+			return 2l;
+		} else if (curso.contains("Letras")){
+			return 3l;
+		} else if (curso.contains("Engenharia Civil")){
+			return 4l;
+		} else
+			return null;
+	}
+	
 }

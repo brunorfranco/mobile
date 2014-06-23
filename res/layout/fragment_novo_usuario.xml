@@ -70,7 +70,8 @@
 	<EditText 
 		android:id="@+id/edSenha" 
 		android:layout_width="match_parent" 
-		android:layout_height="wrap_content" /> 
+		android:layout_height="wrap_content"
+		android:password="true" /> 
 	
 	<TextView 
 		android:id="@+id/textView7" 
@@ -81,7 +82,8 @@
 	<EditText 
 		android:id="@+id/edConfirmarSenha" 
 		android:layout_width="match_parent" 
-		android:layout_height="wrap_content" /> 
+		android:layout_height="wrap_content"
+		android:password="true" /> 
 		
 	<Spinner
         android:id="@+id/spinner1"
@@ -100,7 +102,8 @@
 			android:id="@+id/btadicionar" 
 			android:layout_width="wrap_content" 
 			android:layout_height="wrap_content" 
-			android:text="@string/adiconar" /> 
+			android:text="@string/adiconar"
+			android:onClick="cadastrar"  /> 
 	</LinearLayout> 
 	
 </LinearLayout>

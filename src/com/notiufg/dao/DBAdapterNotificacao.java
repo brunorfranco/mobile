@@ -59,6 +59,19 @@ public class DBAdapterNotificacao {
         return cursor; 
 	}
 	
+	public Cursor getNotificacoesPublicas(){ 
+        Cursor cursor = database.rawQuery("select n.id, n.nomeRemetente, n.texto, n.dataEnvio, n.idGrupoEnvio, n.foiLida from notificacao n "
+        		+ " inner join grupoEnvio g on n.idGrupoEnvio = g.id where g.idCurso = 0;", null); 
+        return cursor; 
+	}
+	
+	public Cursor getNotificacoesEspecificas(Long idCurso){ 
+        Cursor cursor = database.rawQuery("select n.id, n.nomeRemetente, n.texto, n.dataEnvio, n.idGrupoEnvio, n.foiLida from notificacao n "
+        		+ " inner join grupoEnvio g on n.idGrupoEnvio = g.id "
+        		+ " where (g.idCurso = 0 or g.idCurso = " + idCurso + ");", null); 
+        return cursor; 
+	}
+	
 	public Notificacao getNotificacao (Long idNotificacao){ 
         Cursor cursor = database.query(dbHelper.TABLE_NAME, allColumns, dbHelper.ID + " = " + 
         idNotificacao, null,null, null, null); 

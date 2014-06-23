@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.notiufg.R;
 import com.notiufg.adapter.NotificacaoArrayAdapter;
@@ -30,47 +31,64 @@ public class ListNotificacaoActivity extends ListActivity {
 		lista = this;
 	}
 
-@Override
-public void onCreate(Bundle savedInstanceState) {
-	super.onCreate(savedInstanceState);
-	
-	Long[] ids = new Long[20] ;
-	String[] nomesArray = new String[20] ;
-	String[] textosArray = new String[20] ;
-	String[] datasArray = new String[20] ;
-	
-	DBAdapterNotificacao datasource = new DBAdapterNotificacao(this); 
-	datasource.open();
-	Cursor cursor = datasource.getNotificacoes();
-	cursor.moveToFirst();
-	int i = 0;
-	while (cursor.isAfterLast() == false) {
-		Notificacao noti = datasource.cursorToNotificacao(cursor);
-		ids[i] = noti.getId();
-		nomesArray[i] = noti.getNomeRemetente();
-		textosArray[i] = noti.getTexto();
-		datasArray[i] = noti.getDataEnvio();
-	    cursor.moveToNext();
-	    i++;
-	}
-	setListAdapter(new NotificacaoArrayAdapter(this, ids, nomesArray, textosArray, datasArray));
-	ListView listView = getListView();
-	listView.setTextFilterEnabled(true);
-
-	listView.setOnItemClickListener(new OnItemClickListener() {
-		public void onItemClick(AdapterView<?> parent, View view,
-				int position, long id) {
-			DBAdapterNotificacao datasource = new DBAdapterNotificacao(lista); 
-			datasource.open();
-			datasource.marcaComoLida(Long.valueOf(view.getId()));
-			datasource.close();
-			VariaveisGlobais.idNotificacaoSelecionada = Long.valueOf(view.getId());
-			Intent intent = new Intent(lista, SingleNotificationActivity.class);
-		    startActivity(intent);
-		    
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		
+		Long[] ids = new Long[100] ;
+		String[] nomesArray = new String[100] ;
+		String[] textosArray = new String[100] ;
+		String[] datasArray = new String[100] ;
+		
+		DBAdapterNotificacao datasource = new DBAdapterNotificacao(this); 
+		datasource.open();
+		
+		Cursor cursor = null;
+		if(VariaveisGlobais.usuarioLogado == null){
+			cursor = datasource.getNotificacoesPublicas();
+			Toast.makeText(this, "Usuario nao logado, apenas notificacoes publicas!", Toast.LENGTH_LONG).show();
+		} else {
+			cursor = datasource.getNotificacoesEspecificas(VariaveisGlobais.usuarioLogado.getIdCurso());
+			Toast.makeText(this, "Usuario logado, notificacoes publicas e do curso especifico!", Toast.LENGTH_LONG).show();
 		}
-	});
-
+		
+		cursor.moveToFirst();
+		int i = 0;
+		while (cursor.isAfterLast() == false) {
+			Notificacao noti = datasource.cursorToNotificacao(cursor);
+			ids[i] = noti.getId();
+			nomesArray[i] = noti.getNomeRemetente();
+			textosArray[i] = noti.getTexto();
+			datasArray[i] = noti.getDataEnvio();
+		    cursor.moveToNext();
+		    i++;
+		}
+		if(ids[0] == null){
+			datasource.close();
+			Toast.makeText(this, "Nao ha notificacoes!", Toast.LENGTH_LONG).show();
+			return;
+		}
+		
+		setListAdapter(new NotificacaoArrayAdapter(this, ids, nomesArray, textosArray, datasArray));
+		ListView listView = getListView();
+		listView.setTextFilterEnabled(true);
+	
+		listView.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				DBAdapterNotificacao datasource = new DBAdapterNotificacao(lista); 
+				datasource.open();
+				datasource.marcaComoLida(Long.valueOf(view.getId()));
+				datasource.close();
+				VariaveisGlobais.idNotificacaoSelecionada = Long.valueOf(view.getId());
+				Intent intent = new Intent(lista, SingleNotificationActivity.class);
+			    startActivity(intent);
+			    
+			}
+		});
+		
+		datasource.close();
+		
 	}
 
 	@Override

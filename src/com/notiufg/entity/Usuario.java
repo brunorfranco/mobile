@@ -7,17 +7,19 @@ public class Usuario {
 	private String cpf;
 	private String email;
 	private String telefone;
+	private String senha;
 	private String matricula;
 	private Long idCurso;
 	
 	public Usuario(Long id, String nome, String cpf, String email,
-			String telefone, String matricula, Long idCurso) {
+			String telefone, String senha, String matricula, Long idCurso) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
 		this.telefone = telefone;
+		this.senha = senha;
 		this.matricula = matricula;
 		this.idCurso = idCurso;
 	}

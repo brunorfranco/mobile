@@ -16,10 +16,12 @@ public class DbHelperGrupoEnvio extends SQLiteOpenHelper {
     public static final String NOME_GRUPO = "nomeGrupo";
     public static final String ATIVO = "ativo";
     public static final String ISPUBLICO = "isPublico";
+    public static final String IDCURSO = "idCurso";
     private static final String DATABASE_CREATE = "create table "
 		+ TABLE_NAME + "( " + ID
 		+ " integer primary key autoincrement, " + NOME_GRUPO
-		+ " text not null, " + ATIVO + " text not null, " + ISPUBLICO + " integer not null);";
+		+ " text not null, " + ATIVO + " text not null, " + ISPUBLICO + " integer not null , "
+		+ IDCURSO + " integer not null);";
     
    public DbHelperGrupoEnvio(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);

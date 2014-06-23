@@ -13,17 +13,18 @@ public class DBAdapterGrupoEnvio {
 	private SQLiteDatabase database;
 	private DbHelperGrupoEnvio dbHelper;
 	private String[] allColumns = { DbHelperGrupoEnvio.ID, DbHelperGrupoEnvio.NOME_GRUPO, 
-			DbHelperGrupoEnvio.ATIVO, DbHelperGrupoEnvio.ISPUBLICO};
+			DbHelperGrupoEnvio.ATIVO, DbHelperGrupoEnvio.ISPUBLICO, DbHelperGrupoEnvio.IDCURSO};
 	
 	public DBAdapterGrupoEnvio(Context context) {          
 		dbHelper = new DbHelperGrupoEnvio(context);
 	}
 	
-	public GrupoEnvio createGrupoEnvio(String nome, String ativo, Integer isPublico) { 
+	public GrupoEnvio createGrupoEnvio(String nome, String ativo, Integer isPublico, Long idCurso) { 
         ContentValues values = new ContentValues(); 
         values.put(dbHelper.NOME_GRUPO, nome); 
         values.put(dbHelper.ATIVO, ativo); 
         values.put(dbHelper.ISPUBLICO, isPublico); 
+        values.put(dbHelper.IDCURSO, idCurso); 
         long insertId = database.insert(dbHelper.TABLE_NAME, null, values); 
        // To show how to query 
        Cursor cursor = database.query(dbHelper.TABLE_NAME, allColumns, dbHelper.ID + " = " + 
@@ -33,7 +34,8 @@ public class DBAdapterGrupoEnvio {
 	}
 	
 	public GrupoEnvio cursorToGrupoEnvio(Cursor cursor) { 
-		GrupoEnvio grupoEnvio = new GrupoEnvio(cursor.getLong(0),cursor.getString(1),cursor.getString(2), cursor.getInt(3)); 
+		GrupoEnvio grupoEnvio = new GrupoEnvio(cursor.getLong(0),cursor.getString(1),cursor.getString(2),
+				cursor.getInt(3), cursor.getLong(4)); 
         return grupoEnvio; 
 	}
 	
@@ -42,7 +44,7 @@ public class DBAdapterGrupoEnvio {
 	}
 	
 	public Cursor getGruposEnvio(){ 
-        Cursor cursor = database.rawQuery("select id, nomeGrupo, ativo from grupoEnvio", null); 
+        Cursor cursor = database.rawQuery("select id, nomeGrupo, ativo, isPublico, idCurso from grupoEnvio", null); 
         return cursor; 
 	}
 	
@@ -62,7 +64,7 @@ public class DBAdapterGrupoEnvio {
 	}
 	
 	public void atualizaTabela(){
-		dbHelper.onUpgrade(database, 5, 6);
+		dbHelper.onUpgrade(database, 6, 7);
 	}
 	
 	public void deletaGrupoEnvio (Long idGrupo){ 

@@ -37,24 +37,24 @@ public class DBAdapterUsuario {
        return cursorToUsuario(cursor); 
 	}
 	
-	private Usuario cursorToUsuario(Cursor cursor) { 
+	public Usuario cursorToUsuario(Cursor cursor) { 
 		Usuario contacto = null;
 		
 		try {
 			contacto = new Usuario(cursor.getLong(0),cursor.getString(1),cursor.getString(2), 
-			cursor.getString(3),cursor.getString(4), cursor.getString(5), cursor.getLong(6));
+			cursor.getString(3),cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getLong(7));
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
         return contacto; 
 	}
 	
-	public void deletaUsuario (int idUsuario){ 
+	public void deletaUsuario (Long idUsuario){ 
         database.delete(DbHelperUsuario.TABLE_NAME, DbHelperUsuario.ID + " = " + idUsuario, null); 
 	}
 	
 	public Cursor getUsuarios(){ 
-        Cursor cursor = database.rawQuery("select id, nome, cpf, telefone, senha, matricula, idCurso from usuario", null); 
+        Cursor cursor = database.rawQuery("select id, nome, cpf, email, telefone, senha, matricula, idCurso from usuario", null); 
         return cursor; 
 	}
 	
