@@ -65,10 +65,21 @@ public class DBAdapterNotificacao {
         return cursor; 
 	}
 	
-	public Cursor getNotificacoesEspecificas(Long idCurso){ 
-        Cursor cursor = database.rawQuery("select n.id, n.nomeRemetente, n.texto, n.dataEnvio, n.idGrupoEnvio, n.foiLida from notificacao n "
-        		+ " inner join grupoEnvio g on n.idGrupoEnvio = g.id "
-        		+ " where (g.idCurso = 0 or g.idCurso = " + idCurso + ");", null); 
+	public Cursor getNotificacoesEspecificas(Long idCurso, String[] arrayGrupos){ 
+		Cursor cursor = null;
+		if(arrayGrupos != null && arrayGrupos[0] != null){
+			String aux = "";
+			for (int i = 0; i < arrayGrupos.length - 1; i++) {
+				aux = " or g.id = " + arrayGrupos[i+1] + aux;
+			}
+	        cursor = database.rawQuery("select n.id, n.nomeRemetente, n.texto, n.dataEnvio, n.idGrupoEnvio, n.foiLida from notificacao n "
+	        		+ " inner join grupoEnvio g on n.idGrupoEnvio = g.id "
+	        		+ " where (g.id = "+ arrayGrupos[0] + aux +");", null); 
+		} else {
+			cursor = database.rawQuery("select n.id, n.nomeRemetente, n.texto, n.dataEnvio, n.idGrupoEnvio, n.foiLida from notificacao n "
+	        		+ " inner join grupoEnvio g on n.idGrupoEnvio = g.id "
+	        		+ " where (g.idCurso = 0 or g.idCurso = " + idCurso + ");", null); 
+		}
         return cursor; 
 	}
 	

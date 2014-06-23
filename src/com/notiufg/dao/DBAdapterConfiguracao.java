@@ -45,6 +45,11 @@ public class DBAdapterConfiguracao {
         return cursor; 
 	}
 	
+	public Cursor getConfiguracoesBydIdUsuario(Long idUsuario){ 
+        Cursor cursor = database.rawQuery("select id, idUsuario, idsGruposEnvio from configuracao where idUsuario = " + idUsuario, null); 
+        return cursor; 
+	}
+	
 	public Configuracao getConfiguracao (int idConfiguracao){ 
         Cursor cursor = database.query(dbHelper.TABLE_NAME, allColumns, dbHelper.ID + " = " + 
         idConfiguracao, null,null, null, null); 
@@ -58,6 +63,14 @@ public class DBAdapterConfiguracao {
 	
 	public void close() {
 	    dbHelper.close();
+	}
+	
+	public void atualizaTabela(){
+		dbHelper.onUpgrade(database, 7, 8);
+	}
+	
+	public void deletaConfiguracao (Long idConfiguracao){ 
+        database.delete(DbHelperUsuario.TABLE_NAME, DBHelperConfiguracao.ID + " = " + idConfiguracao, null); 
 	}
 	
 }

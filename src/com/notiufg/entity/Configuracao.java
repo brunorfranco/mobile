@@ -6,7 +6,7 @@ public class Configuracao {
 	private Long id;
 	private Long idUsuario;
 	//vou separar os ids dos grupos de envio para esse usuario por ponto-e-virgula, nao sei fazer
-	//o mapeamento no sqlLite
+	//o mapeamento relacional um para muitos no sqlLite
 	private String idsGruposEnvio;
 	
 	public Long getId() {

@@ -1,25 +1,27 @@
 package com.notiufg.activity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.DialogFragment;
 import android.app.ListActivity;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.notiufg.R;
 import com.notiufg.adapter.NotificacaoArrayAdapter;
+import com.notiufg.dao.DBAdapterConfiguracao;
 import com.notiufg.dao.DBAdapterNotificacao;
 import com.notiufg.dialog.NotificationsViewDialog;
+import com.notiufg.entity.Configuracao;
 import com.notiufg.entity.Notificacao;
 import com.notiufg.util.VariaveisGlobais;
 
@@ -48,7 +50,24 @@ public class ListNotificacaoActivity extends ListActivity {
 			cursor = datasource.getNotificacoesPublicas();
 			Toast.makeText(this, "Usuario nao logado, apenas notificacoes publicas!", Toast.LENGTH_LONG).show();
 		} else {
-			cursor = datasource.getNotificacoesEspecificas(VariaveisGlobais.usuarioLogado.getIdCurso());
+			DBAdapterConfiguracao datasourceConfig = new DBAdapterConfiguracao(this); 
+			datasourceConfig.open();
+			Cursor cursorListaGruposEnvioUsuario = datasourceConfig.getConfiguracoesBydIdUsuario(VariaveisGlobais.usuarioLogado.getId());
+			String listaGruposStr = "";
+			if(cursorListaGruposEnvioUsuario != null){
+				cursorListaGruposEnvioUsuario.moveToFirst();
+				while (cursorListaGruposEnvioUsuario.isAfterLast() == false) {
+					Configuracao conf = datasourceConfig.cursorToConfiguracao(cursorListaGruposEnvioUsuario);
+					listaGruposStr = conf.getIdsGruposEnvio();
+					cursorListaGruposEnvioUsuario.moveToNext();
+				}
+			}
+			String[] arrayGrupos = new String[20];
+			if(!listaGruposStr.isEmpty()){
+				arrayGrupos = listaGruposStr.split(";");
+			}
+			
+			cursor = datasource.getNotificacoesEspecificas(VariaveisGlobais.usuarioLogado.getIdCurso(), arrayGrupos);
 			Toast.makeText(this, "Usuario logado, notificacoes publicas e do curso especifico!", Toast.LENGTH_LONG).show();
 		}
 		

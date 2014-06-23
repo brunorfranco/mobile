@@ -1,5 +1,6 @@
 package com.notiufg.activity;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -13,7 +14,10 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.notiufg.R;
+import com.notiufg.dao.DBAdapterConfiguracao;
 import com.notiufg.dao.DBAdapterUsuario;
+import com.notiufg.entity.GrupoEnvio;
+import com.notiufg.entity.Usuario;
 import com.notiufg.listener.CustomOnItemSelectedListener;
 
 public class NovoUsuarioActivity extends ActionBarActivity {
@@ -105,11 +109,28 @@ public class NovoUsuarioActivity extends ActionBarActivity {
 		
 		DBAdapterUsuario datasource = new DBAdapterUsuario(this); 
 		datasource.open();
-		datasource.createUsuario(nomeStr, cpfStr, emailStr, 
+		Usuario usuarioNovo = datasource.createUsuario(nomeStr, cpfStr, emailStr, 
 				telefoneStr, senhaStr, matriculaStr, idCurso);
 		datasource.close();
 		
 		Toast.makeText(this, "Usuario criado com sucesso!", Toast.LENGTH_LONG).show();
+		
+		//cria configuracoes basicas para o usuario, grupos de envio publico e grupos de materias do curso em questao
+		DBAdapterConfiguracao datasourceConf = new DBAdapterConfiguracao(this); 
+		datasourceConf.open();
+		String gruposEnvio = "1;2;3;4;5"; // grupos publicos
+		if(idCurso.intValue() == 1){
+			gruposEnvio += ";6;7;8;9;10;11";
+		} else if(idCurso.intValue() == 2){
+			gruposEnvio += ";12;13;14;15";
+		} else if(idCurso.intValue() == 3){
+			gruposEnvio += ";16;17;18";
+		} else if(idCurso.intValue() == 4){
+			gruposEnvio += ";19;20;21";
+		}
+		
+		datasourceConf.createConfiguracao(usuarioNovo.getId(), gruposEnvio); //combinacao de gruposEnvio publicos + eng de software
+		datasourceConf.close();
 		
 //		limparCampos
 		nome.setText("");

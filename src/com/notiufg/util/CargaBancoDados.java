@@ -9,10 +9,12 @@ import android.database.Cursor;
 
 import com.notiufg.activity.LoginActivity;
 import com.notiufg.activity.MainActivity;
+import com.notiufg.dao.DBAdapterConfiguracao;
 import com.notiufg.dao.DBAdapterCurso;
 import com.notiufg.dao.DBAdapterGrupoEnvio;
 import com.notiufg.dao.DBAdapterNotificacao;
 import com.notiufg.dao.DBAdapterUsuario;
+import com.notiufg.entity.Configuracao;
 import com.notiufg.entity.Curso;
 import com.notiufg.entity.GrupoEnvio;
 import com.notiufg.entity.Notificacao;
@@ -203,6 +205,26 @@ public class CargaBancoDados {
 		if (cursor.isAfterLast() != false) {
 			datasource.createUsuario("Bruno", "030.813.361-71", "bruno@teste.com", 
 					"32618888", "senhateste", "071750", new Long(1));
+		}
+		
+		datasource.close();
+	}
+	
+	public static void insereConfiguracaoParaUsuarioPadrao(MainActivity mainActivity){
+		DBAdapterConfiguracao datasource = new DBAdapterConfiguracao(mainActivity); 
+		datasource.open();
+//		datasource.atualizaTabela();
+		Cursor cursor = datasource.getConfiguracoes();
+		cursor.moveToFirst();
+//		while (cursor.isAfterLast() == false) {
+//			Configuracao config = datasource.cursorToConfiguracao(cursor);
+//			datasource.deletaConfiguracao(Long.valueOf(config.getId()));
+//		    cursor.moveToNext();
+//		}
+		
+		if (cursor.isAfterLast() != false) {
+			datasource.createConfiguracao(1l, "1;2;3;4;5;6;7;8;9;10;11"); //combinacao de gruposEnvio publicos + eng de software
+			datasource.createConfiguracao(10l, "1;2;3;4;5;6;7;8;9;10;11");
 		}
 		
 		datasource.close();
