@@ -44,7 +44,7 @@ public class CargaBancoDados {
 		DBAdapterCurso datasource = new DBAdapterCurso(mainActivity); 
 		datasource.open();
 
-//		limpaTabelaCursos(datasource);
+		limpaTabelaCursos(datasource);
 		carregaDadosTabelaCurso(datasource);
 		
 		datasource.close();
@@ -92,7 +92,7 @@ public class CargaBancoDados {
 //		datasource.dropTable();
 //		datasource.deleteFromTable();
 		datasource.open();
-//		datasource.atualizaTabela();
+		datasource.atualizaTabela();
 		Cursor cursor = datasource.getCursos();
 		cursor.moveToFirst();
 		while (cursor.isAfterLast() == false) {
@@ -122,11 +122,7 @@ public class CargaBancoDados {
 			String texto = "www.google.com.br Texto Teste Texto Teste Texto Teste "
 					+ "Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste Texto "
 					+ "Teste Texto Teste Texto Teste" + i;
-			Integer idGrupoEnvio = 1 + (int)(Math.random() * ((11 - 0) + 1));
-			
-//			if(idGrupoEnvio.intValue() == 0){
-//				datasource.createNotificacao(grupo.getNomeGrupoEnvio(), texto, getDateTime(), idGrupoEnvio, 0);
-//			}
+			Integer idGrupoEnvio = 1 + (int)(Math.random() * ((20 - 0) + 1));
 			
 			GrupoEnvio grupo = datasourceGrupo.getGrupoEnvio(idGrupoEnvio);
 			
@@ -184,10 +180,10 @@ public class CargaBancoDados {
 	private static void carregaDadosTabelaCurso(DBAdapterCurso datasource){
 //		datasource.atualizaTabela();
 //		datasource.createTable();
-		datasource.createCurso("Engenharia de Software");
-		datasource.createCurso("Ciencia da Computacao");
-		datasource.createCurso("Letras");
-		datasource.createCurso("Engenharia Civil");
+		datasource.createCurso("Engenharia de Software", 1);
+		datasource.createCurso("Ciencia da Computacao", 2);
+		datasource.createCurso("Letras", 3);
+		datasource.createCurso("Engenharia Civil", 4);
 	}
 	
 	public static void insereUsuarioPadrao(MainActivity mainActivity){

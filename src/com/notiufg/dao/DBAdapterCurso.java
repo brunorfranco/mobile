@@ -12,15 +12,16 @@ public class DBAdapterCurso {
 
 	private SQLiteDatabase database;
 	private DBHelperCurso dbHelper;
-	private String[] allColumns = { DBHelperCurso.ID, DBHelperCurso.NOMECURSO};
+	private String[] allColumns = { DBHelperCurso.ID, DBHelperCurso.NOMECURSO, DBHelperCurso.IDEXTERNO};
 	
 	public DBAdapterCurso(Context context) {          
 		dbHelper = new DBHelperCurso(context);
 	}
 	
-	public Curso createCurso(String nomeCurso) { 
+	public Curso createCurso(String nomeCurso, int idExterno) { 
         ContentValues values = new ContentValues(); 
         values.put(dbHelper.NOMECURSO, nomeCurso); 
+        values.put(dbHelper.IDEXTERNO, idExterno); 
         long insertId = database.insert(dbHelper.TABLE_NAME, null, values); 
        // To show how to query 
        Cursor cursor = database.query(dbHelper.TABLE_NAME, allColumns, dbHelper.ID + " = " + 
@@ -33,7 +34,7 @@ public class DBAdapterCurso {
 		Curso curso = null;
 		
 		try {
-			curso = new Curso(cursor.getLong(0),cursor.getString(1));
+			curso = new Curso(cursor.getLong(0),cursor.getString(1), cursor.getInt(2));
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
@@ -45,7 +46,7 @@ public class DBAdapterCurso {
 	}
 	
 	public Cursor getCursos(){ 
-        Cursor cursor = database.rawQuery("select id, nomeCurso from curso", null); 
+        Cursor cursor = database.rawQuery("select id, nomeCurso, idExterno from curso", null); 
         return cursor; 
 	}
 	
@@ -64,11 +65,12 @@ public class DBAdapterCurso {
 	}
 	
 	public void createTable(){
-		database.rawQuery("create table curso (id integer primary key autoincrement, nomeCurso text not null);", null); 
+		database.rawQuery("create table curso (id integer primary key autoincrement, nomeCurso text not null,"
+				+ "idExterno integer not null);", null); 
 	}
 	
 	public void atualizaTabela(){
-		dbHelper.onUpgrade(database, 6,7);
+		dbHelper.onUpgrade(database, 7,8);
 	}
 	
 }

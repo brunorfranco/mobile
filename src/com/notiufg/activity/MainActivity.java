@@ -58,7 +58,7 @@ public class MainActivity extends ActionBarActivity {
 //		CargaBancoDados.carregaCursosIniciais(this);
 //		CargaBancoDados.carregaGrupoEnvio(this);
 //		CargaBancoDados.insereUsuarioPadrao(this);
-//		CargaBancoDados.carregaNotificacoesIniciais(this);
+		CargaBancoDados.carregaNotificacoesIniciais(this);
 		
 		
 		

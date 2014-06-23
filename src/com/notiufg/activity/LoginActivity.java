@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.notiufg.R;
 import com.notiufg.entity.Usuario;
@@ -99,6 +100,7 @@ public class LoginActivity extends ActionBarActivity {
 			VariaveisGlobais.usuarioLogado = usuario;
 			intent = new Intent(this, ListNotificacaoActivity.class);
 		} else {
+			Toast.makeText(this, "Login inválido, tente novamente.", Toast.LENGTH_LONG).show();
 			intent = new Intent(this, LoginActivity.class);
 		}
 		

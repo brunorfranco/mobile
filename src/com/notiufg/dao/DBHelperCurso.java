@@ -14,10 +14,12 @@ public class DBHelperCurso extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = DBUtil.versaoDB;
     public static final String ID = "id";
     public static final String NOMECURSO = "nomeCurso";
+    public static final String IDEXTERNO = "idExterno";
     private static final String DATABASE_CREATE = "create table "
 		+ TABLE_NAME + "( " + ID
 		+ " integer primary key autoincrement, " + NOMECURSO
-		+ " text not null);";
+		+ " text not null , " + IDEXTERNO
+		+ " integer not null);";
     
    public DBHelperCurso(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
