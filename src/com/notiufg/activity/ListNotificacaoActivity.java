@@ -1,8 +1,5 @@
 package com.notiufg.activity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.DialogFragment;
 import android.app.ListActivity;
 import android.content.Intent;
@@ -124,7 +121,8 @@ public class ListNotificacaoActivity extends ListActivity {
 		    new MenuItem.OnMenuItemClickListener () 
 		    { 
 		        public boolean onMenuItemClick(MenuItem item) {
-		        	DialogFragment notificationDialog = NotificationsViewDialog.newInstance();
+		        	NotificationsViewDialog notificationDialog = NotificationsViewDialog.newInstance();
+		        	notificationDialog.setListActivity(lista);
 		    		notificationDialog.show(getFragmentManager(), "dialog");
 		        	return true;
 		        }
@@ -134,8 +132,4 @@ public class ListNotificacaoActivity extends ListActivity {
 		return true;
 	}
 	
-	public void onMenuItemClick(MenuItem item) {
-    	DialogFragment notificationDialog = NotificationsViewDialog.newInstance();
-		notificationDialog.show(getFragmentManager(), "dialog");
-    }
 }

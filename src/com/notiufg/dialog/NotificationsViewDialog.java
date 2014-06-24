@@ -2,6 +2,7 @@ package com.notiufg.dialog;
 
 import android.app.DialogFragment;
 import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,9 +13,31 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.notiufg.R;
+import com.notiufg.activity.ListNotificacaoActivity;
+import com.notiufg.dao.DBAdapterConfiguracao;
+import com.notiufg.entity.Configuracao;
 import com.notiufg.util.VariaveisGlobais;
 
 public class NotificationsViewDialog extends DialogFragment {
+	
+	ListNotificacaoActivity listActivity;
+	
+	public ListNotificacaoActivity getListActivity() {
+		return listActivity;
+	}
+
+	public void setListActivity(ListNotificacaoActivity listActivity) {
+		this.listActivity = listActivity;
+	}
+
+	//switchs publicos 
+	Switch reitoriaView;
+	Switch proReitoriaView;
+	Switch bibliotecaView;
+	Switch coordenadorCursoView;
+	Switch direcaoUnidadeView;
+	
+	//switchs especificos
 	Switch switch1;
 	Switch switch2;
 	Switch switch3;
@@ -48,13 +71,163 @@ public class NotificationsViewDialog extends DialogFragment {
 	
 			View view = inflater.inflate(R.layout.fragment_notifications_dialog,
 					container, true);
-	
-			switch1 = (Switch) view.findViewById(R.id.switch1);
 			
-			switch1.setChecked(true);
+			reitoriaView = (Switch) view.findViewById(R.id.reitoriaView);
+			proReitoriaView = (Switch) view.findViewById(R.id.proReitoriaView);
+			bibliotecaView = (Switch) view.findViewById(R.id.bibliotecaView);
+			coordenadorCursoView = (Switch) view.findViewById(R.id.coordenadorCursoView);
+			direcaoUnidadeView = (Switch) view.findViewById(R.id.direcaoUnidadeView);
+			
+			switch1 = (Switch) view.findViewById(R.id.switch1);
+			switch2 = (Switch) view.findViewById(R.id.switch2);
+			switch3 = (Switch) view.findViewById(R.id.switch3);
+			switch4 = (Switch) view.findViewById(R.id.switch4);
+			switch5 = (Switch) view.findViewById(R.id.switch5);
+			switch6 = (Switch) view.findViewById(R.id.switch6);
+			
+			
+			DBAdapterConfiguracao datasourceConfig = new DBAdapterConfiguracao(listActivity); 
+			datasourceConfig.open();
+			Cursor cursorListaGruposEnvioUsuario = datasourceConfig.getConfiguracoesBydIdUsuario(VariaveisGlobais.usuarioLogado.getId());
+			String listaGruposStr = "";
+			if(cursorListaGruposEnvioUsuario != null){
+				cursorListaGruposEnvioUsuario.moveToFirst();
+				while (cursorListaGruposEnvioUsuario.isAfterLast() == false) {
+					Configuracao conf = datasourceConfig.cursorToConfiguracao(cursorListaGruposEnvioUsuario);
+					listaGruposStr = conf.getIdsGruposEnvio();
+					cursorListaGruposEnvioUsuario.moveToNext();
+				}
+			}
+			String[] arrayGrupos = new String[20];
+			if(!listaGruposStr.isEmpty()){
+				arrayGrupos = listaGruposStr.split(";");
+			}	
+			
+			Integer[] arrayGruposInt = new Integer[20];
+			if(arrayGrupos != null && arrayGrupos[0] != null){
+				for (int i = 0; i < arrayGrupos.length; i++) {
+					arrayGruposInt[i] = Integer.parseInt(arrayGrupos[i]);
+				}
+			}
+			
+			for (int i = 0; i < arrayGruposInt.length; i++) {
+				if(arrayGruposInt[i] == null){
+					break;
+				}
+				//switchs publics
+				if(arrayGruposInt[i] == 1){
+					reitoriaView.setChecked(true);
+					continue;
+				}
+				if(arrayGruposInt[i] == 2){
+					proReitoriaView.setChecked(true);
+					continue;
+				}
+				if(arrayGruposInt[i] == 3){
+					bibliotecaView.setChecked(true);
+					continue;
+				}
+				if(arrayGruposInt[i] == 4){
+					coordenadorCursoView.setChecked(true);
+					continue;
+				}
+				if(arrayGruposInt[i] == 5){
+					direcaoUnidadeView.setChecked(true);
+					continue;
+				}
+				
+				//switchs especificos
+				if(arrayGruposInt[i] == 6){
+					switch1.setChecked(true);
+					continue;
+				}
+				if(arrayGruposInt[i] == 7){
+					switch2.setChecked(true);
+					continue;
+				}
+				if(arrayGruposInt[i] == 8){
+					switch3.setChecked(true);
+					continue;
+				}
+				if(arrayGruposInt[i] == 9){
+					switch4.setChecked(true);
+					continue;
+				}
+				if(arrayGruposInt[i] == 10){
+					switch5.setChecked(true);
+					continue;
+				}
+				if(arrayGruposInt[i] == 11){
+					switch6.setChecked(true);
+					continue;
+				}
+				
+			}
+			
+			reitoriaView.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+				   @Override
+				   public void onCheckedChanged(CompoundButton buttonView,
+				     boolean isChecked) {
+				 
+				    if(isChecked){
+				    	DBAdapterConfiguracao datasourceConfig = new DBAdapterConfiguracao(listActivity); 
+						datasourceConfig.open();
+						Cursor cursorListaGruposEnvioUsuario = datasourceConfig.getConfiguracoesBydIdUsuario(VariaveisGlobais.usuarioLogado.getId());
+						String listaGruposStr = "";
+						if(cursorListaGruposEnvioUsuario != null){
+							cursorListaGruposEnvioUsuario.moveToFirst();
+							while (cursorListaGruposEnvioUsuario.isAfterLast() == false) {
+								Configuracao conf = datasourceConfig.cursorToConfiguracao(cursorListaGruposEnvioUsuario);
+								listaGruposStr = conf.getIdsGruposEnvio();
+								cursorListaGruposEnvioUsuario.moveToNext();
+							}
+						}
+						listaGruposStr += ";1";
+						datasourceConfig.updateConfiguracao(VariaveisGlobais.usuarioLogado.getId(), listaGruposStr);
+						datasourceConfig.close();
+				    }else{
+				    	DBAdapterConfiguracao datasourceConfig = new DBAdapterConfiguracao(listActivity); 
+						datasourceConfig.open();
+						Cursor cursorListaGruposEnvioUsuario = datasourceConfig.getConfiguracoesBydIdUsuario(VariaveisGlobais.usuarioLogado.getId());
+						String listaGruposStr = "";
+						if(cursorListaGruposEnvioUsuario != null){
+							cursorListaGruposEnvioUsuario.moveToFirst();
+							while (cursorListaGruposEnvioUsuario.isAfterLast() == false) {
+								Configuracao conf = datasourceConfig.cursorToConfiguracao(cursorListaGruposEnvioUsuario);
+								listaGruposStr = conf.getIdsGruposEnvio();
+								cursorListaGruposEnvioUsuario.moveToNext();
+							}
+						}
+						
+						String[] arrayGrupos = new String[20];
+						if(!listaGruposStr.isEmpty()){
+							arrayGrupos = listaGruposStr.split(";");
+						}
+						
+						Integer[] arrayGruposInt = new Integer[20];
+						if(arrayGrupos != null && arrayGrupos[0] != null){
+							for (int i = 0; i < arrayGrupos.length; i++) {
+								if(Integer.parseInt(arrayGrupos[i]) == 1){
+									continue;
+								}
+								arrayGruposInt[i] = Integer.parseInt(arrayGrupos[i]);
+							}
+						}
+						String lista = "";
+						for (int i = 0; i < arrayGruposInt.length; i++) {
+							if(arrayGruposInt[i] == null){
+								continue;
+							}
+							lista += arrayGruposInt[i] + ";";
+						}
+						
+						datasourceConfig.updateConfiguracao(VariaveisGlobais.usuarioLogado.getId(), lista);
+						datasourceConfig.close();
+				    }
+				   }
+				  });
 			
 			switch1.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-				 
 				   @Override
 				   public void onCheckedChanged(CompoundButton buttonView,
 				     boolean isChecked) {
@@ -64,16 +237,9 @@ public class NotificationsViewDialog extends DialogFragment {
 				    }else{
 				    	System.out.println("Switch is currently OFF");
 				    }
-				 
 				   }
 				  });
 			
-			switch2 = (Switch) view.findViewById(R.id.switch2);
-			switch3 = (Switch) view.findViewById(R.id.switch3);
-			switch4 = (Switch) view.findViewById(R.id.switch4);
-			switch5 = (Switch) view.findViewById(R.id.switch5);
-			switch6 = (Switch) view.findViewById(R.id.switch6);
-	
 			mContext = view.getContext();
 			return view;
 		}

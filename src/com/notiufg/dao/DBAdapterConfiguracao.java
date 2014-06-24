@@ -50,6 +50,10 @@ public class DBAdapterConfiguracao {
         return cursor; 
 	}
 	
+	public void updateConfiguracao(Long idUsuario, String listIdsGrupos){ 
+        database.rawQuery("update configuracao set idsGruposEnvio = "+ listIdsGrupos +" where idUsuario = " + idUsuario, null); 
+	}
+	
 	public Configuracao getConfiguracao (int idConfiguracao){ 
         Cursor cursor = database.query(dbHelper.TABLE_NAME, allColumns, dbHelper.ID + " = " + 
         idConfiguracao, null,null, null, null); 

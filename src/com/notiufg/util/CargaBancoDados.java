@@ -14,7 +14,6 @@ import com.notiufg.dao.DBAdapterCurso;
 import com.notiufg.dao.DBAdapterGrupoEnvio;
 import com.notiufg.dao.DBAdapterNotificacao;
 import com.notiufg.dao.DBAdapterUsuario;
-import com.notiufg.entity.Configuracao;
 import com.notiufg.entity.Curso;
 import com.notiufg.entity.GrupoEnvio;
 import com.notiufg.entity.Notificacao;
