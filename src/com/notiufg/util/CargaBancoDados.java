@@ -14,6 +14,7 @@ import com.notiufg.dao.DBAdapterCurso;
 import com.notiufg.dao.DBAdapterGrupoEnvio;
 import com.notiufg.dao.DBAdapterNotificacao;
 import com.notiufg.dao.DBAdapterUsuario;
+import com.notiufg.entity.Configuracao;
 import com.notiufg.entity.Curso;
 import com.notiufg.entity.GrupoEnvio;
 import com.notiufg.entity.Notificacao;
@@ -195,11 +196,11 @@ public class CargaBancoDados {
 		Cursor cursor = datasource.getUsuarios();
 		cursor.moveToFirst();
 		//limpa tabela de usuarios
-//		while (cursor.isAfterLast() == false) {
-//			Usuario usuario = datasource.cursorToUsuario(cursor);
-//			datasource.deletaUsuario(Long.valueOf(usuario.getId()));
-//		    cursor.moveToNext();
-//		}
+		while (cursor.isAfterLast() == false) {
+			Usuario usuario = datasource.cursorToUsuario(cursor);
+			datasource.deletaUsuario(Long.valueOf(usuario.getId()));
+		    cursor.moveToNext();
+		}
 		
 		if (cursor.isAfterLast() != false) {
 			datasource.createUsuario("Bruno", "030.813.361-71", "bruno@teste.com", 
@@ -215,15 +216,16 @@ public class CargaBancoDados {
 //		datasource.atualizaTabela();
 		Cursor cursor = datasource.getConfiguracoes();
 		cursor.moveToFirst();
-//		while (cursor.isAfterLast() == false) {
-//			Configuracao config = datasource.cursorToConfiguracao(cursor);
-//			datasource.deletaConfiguracao(Long.valueOf(config.getId()));
-//		    cursor.moveToNext();
-//		}
+		while (cursor.isAfterLast() == false) {
+			Configuracao config = datasource.cursorToConfiguracao(cursor);
+			datasource.deletaConfiguracao(Long.valueOf(config.getId()));
+		    cursor.moveToNext();
+		}
 		
 		if (cursor.isAfterLast() != false) {
 			datasource.createConfiguracao(1l, "1;2;3;4;5;6;7;8;9;10;11"); //combinacao de gruposEnvio publicos + eng de software
 			datasource.createConfiguracao(10l, "1;2;3;4;5;6;7;8;9;10;11");
+			datasource.createConfiguracao(11l, "1;2;3;4;5;6;7;8;9;10;11");
 		}
 		
 		datasource.close();

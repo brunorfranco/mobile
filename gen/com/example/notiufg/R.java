@@ -1091,8 +1091,13 @@ containing a value of this type.
         public static final int list_item_bg_normal=0x7f02005d;
         public static final int list_item_bg_pressed=0x7f02005e;
         public static final int list_selector=0x7f02005f;
-        public static final int paste32=0x7f020060;
-        public static final int ufg_icon=0x7f020061;
+        public static final int order2=0x7f020060;
+        public static final int order64=0x7f020061;
+        public static final int orderby=0x7f020062;
+        public static final int paste32=0x7f020063;
+        public static final int refresh=0x7f020064;
+        public static final int refresh2=0x7f020065;
+        public static final int ufg_icon=0x7f020066;
     }
     public static final class id {
         public static final int ImageView01=0x7f05004d;
@@ -1103,12 +1108,14 @@ containing a value of this type.
         public static final int action_bar_root=0x7f05001a;
         public static final int action_bar_subtitle=0x7f050023;
         public static final int action_bar_title=0x7f050022;
-        public static final int action_config=0x7f050072;
+        public static final int action_config=0x7f050074;
         public static final int action_context_bar=0x7f05001d;
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f050073;
+        public static final int action_order=0x7f050072;
+        public static final int action_refresh=0x7f050073;
+        public static final int action_settings=0x7f050075;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;

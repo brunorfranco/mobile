@@ -11,6 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.notiufg.R;
+import com.notiufg.dao.DBAdapterNotificacao;
+import com.notiufg.entity.Notificacao;
+import com.notiufg.util.VariaveisGlobais;
 
 public class NotificacaoArrayAdapter extends ArrayAdapter<String> {
 	private final Context context;
@@ -45,7 +48,16 @@ public class NotificacaoArrayAdapter extends ArrayAdapter<String> {
 		
 		int anInt = new BigDecimal(ids[position]).intValueExact();
 		rowView.setId(anInt);
- 
+		
+		if(VariaveisGlobais.usuarioLogado != null){
+			DBAdapterNotificacao datasource = new DBAdapterNotificacao(context); 
+			datasource.open();
+			Notificacao noti = datasource.getNotificacao(Long.valueOf(anInt));
+			if(noti.getFoiLida() == 0){
+				textViewTexto.setPaintFlags(Paint.FAKE_BOLD_TEXT_FLAG);
+			}
+			datasource.close();
+		}
 		return rowView;
 	}
 }

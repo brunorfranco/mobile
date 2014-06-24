@@ -1,6 +1,5 @@
 package com.notiufg.activity;
 
-import android.app.DialogFragment;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -24,6 +23,7 @@ import com.notiufg.util.VariaveisGlobais;
 
 public class ListNotificacaoActivity extends ListActivity {
 
+	static Boolean orderByData = false;
 	ListNotificacaoActivity lista;
 	public ListNotificacaoActivity() {
 		super();
@@ -62,6 +62,11 @@ public class ListNotificacaoActivity extends ListActivity {
 			String[] arrayGrupos = new String[20];
 			if(!listaGruposStr.isEmpty()){
 				arrayGrupos = listaGruposStr.split(";");
+			}
+			
+			if(arrayGrupos[0] == null){
+				Toast.makeText(this, "Nao ha notificacoes para serem exibidas!", Toast.LENGTH_LONG).show();
+				return;
 			}
 			
 			cursor = datasource.getNotificacoesEspecificas(VariaveisGlobais.usuarioLogado.getIdCurso(), arrayGrupos);
@@ -124,6 +129,45 @@ public class ListNotificacaoActivity extends ListActivity {
 		        	NotificationsViewDialog notificationDialog = NotificationsViewDialog.newInstance();
 		        	notificationDialog.setListActivity(lista);
 		    		notificationDialog.show(getFragmentManager(), "dialog");
+		        	return true;
+		        }
+		    } 
+		); 
+		
+		MenuItem itemRefresh = menu.findItem(R.id.action_refresh);
+		
+		if (itemRefresh == null)
+		    return true;
+		
+		itemRefresh.setOnMenuItemClickListener
+		(
+		    new MenuItem.OnMenuItemClickListener () 
+		    { 
+		        public boolean onMenuItemClick(MenuItem item) {
+		        	Intent intent = new Intent(lista, ListNotificacaoActivity.class);
+		    	    startActivity(intent);
+		        	return true;
+		        }
+		    } 
+		); 
+		
+		MenuItem itemOrder = menu.findItem(R.id.action_order);
+		
+		if (itemOrder == null)
+		    return true;
+		
+		itemOrder.setOnMenuItemClickListener
+		(
+		    new MenuItem.OnMenuItemClickListener () 
+		    { 
+		        public boolean onMenuItemClick(MenuItem item) {
+		        	if(orderByData == true){
+		        		orderByData = false;
+		        	} else {
+		        		orderByData = true;
+		        	}
+		        	Intent intent = new Intent(lista, ListNotificacaoActivity.class);
+		    	    startActivity(intent);
 		        	return true;
 		        }
 		    } 

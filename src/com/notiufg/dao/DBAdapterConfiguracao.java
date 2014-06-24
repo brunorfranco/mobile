@@ -51,7 +51,9 @@ public class DBAdapterConfiguracao {
 	}
 	
 	public void updateConfiguracao(Long idUsuario, String listIdsGrupos){ 
-        database.rawQuery("update configuracao set idsGruposEnvio = "+ listIdsGrupos +" where idUsuario = " + idUsuario, null); 
+		ContentValues data = new ContentValues();
+		data.put("idsGruposEnvio", listIdsGrupos);
+		database.update("configuracao", data, "idUsuario ="+idUsuario, null);
 	}
 	
 	public Configuracao getConfiguracao (int idConfiguracao){ 

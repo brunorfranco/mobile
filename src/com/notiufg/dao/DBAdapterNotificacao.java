@@ -103,11 +103,15 @@ public class DBAdapterNotificacao {
 	}
 	
 	public void marcaComoNaoLida (Long idNotificacao){ 
-        database.rawQuery("update notificacao set foiLida = 0 where id = " + idNotificacao, null);
+        ContentValues data = new ContentValues();
+		data.put("foiLida", 0);
+		database.update("notificacao", data, "id ="+idNotificacao, null);
 	}
 	
 	public void marcaComoLida (Long idNotificacao){ 
-        database.rawQuery("update notificacao set foiLida = 1 where id = " + idNotificacao, null);
+		ContentValues data = new ContentValues();
+		data.put("foiLida", 1);
+		database.update("notificacao", data, "id ="+idNotificacao, null);
 	}
 	
 }

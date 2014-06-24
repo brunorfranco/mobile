@@ -182,7 +182,7 @@ public class NotificationsViewDialog extends DialogFragment {
 								cursorListaGruposEnvioUsuario.moveToNext();
 							}
 						}
-						listaGruposStr += ";1";
+						listaGruposStr += "1;";
 						datasourceConfig.updateConfiguracao(VariaveisGlobais.usuarioLogado.getId(), listaGruposStr);
 						datasourceConfig.close();
 				    }else{
@@ -227,15 +227,632 @@ public class NotificationsViewDialog extends DialogFragment {
 				   }
 				  });
 			
+			proReitoriaView.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+				   @Override
+				   public void onCheckedChanged(CompoundButton buttonView,
+				     boolean isChecked) {
+				 
+				    if(isChecked){
+				    	DBAdapterConfiguracao datasourceConfig = new DBAdapterConfiguracao(listActivity); 
+						datasourceConfig.open();
+						Cursor cursorListaGruposEnvioUsuario = datasourceConfig.getConfiguracoesBydIdUsuario(VariaveisGlobais.usuarioLogado.getId());
+						String listaGruposStr = "";
+						if(cursorListaGruposEnvioUsuario != null){
+							cursorListaGruposEnvioUsuario.moveToFirst();
+							while (cursorListaGruposEnvioUsuario.isAfterLast() == false) {
+								Configuracao conf = datasourceConfig.cursorToConfiguracao(cursorListaGruposEnvioUsuario);
+								listaGruposStr = conf.getIdsGruposEnvio();
+								cursorListaGruposEnvioUsuario.moveToNext();
+							}
+						}
+						listaGruposStr += "2;";
+						datasourceConfig.updateConfiguracao(VariaveisGlobais.usuarioLogado.getId(), listaGruposStr);
+						datasourceConfig.close();
+				    }else{
+				    	DBAdapterConfiguracao datasourceConfig = new DBAdapterConfiguracao(listActivity); 
+						datasourceConfig.open();
+						Cursor cursorListaGruposEnvioUsuario = datasourceConfig.getConfiguracoesBydIdUsuario(VariaveisGlobais.usuarioLogado.getId());
+						String listaGruposStr = "";
+						if(cursorListaGruposEnvioUsuario != null){
+							cursorListaGruposEnvioUsuario.moveToFirst();
+							while (cursorListaGruposEnvioUsuario.isAfterLast() == false) {
+								Configuracao conf = datasourceConfig.cursorToConfiguracao(cursorListaGruposEnvioUsuario);
+								listaGruposStr = conf.getIdsGruposEnvio();
+								cursorListaGruposEnvioUsuario.moveToNext();
+							}
+						}
+						
+						String[] arrayGrupos = new String[20];
+						if(!listaGruposStr.isEmpty()){
+							arrayGrupos = listaGruposStr.split(";");
+						}
+						
+						Integer[] arrayGruposInt = new Integer[20];
+						if(arrayGrupos != null && arrayGrupos[0] != null){
+							for (int i = 0; i < arrayGrupos.length; i++) {
+								if(Integer.parseInt(arrayGrupos[i]) == 2){
+									continue;
+								}
+								arrayGruposInt[i] = Integer.parseInt(arrayGrupos[i]);
+							}
+						}
+						String lista = "";
+						for (int i = 0; i < arrayGruposInt.length; i++) {
+							if(arrayGruposInt[i] == null){
+								continue;
+							}
+							lista += arrayGruposInt[i] + ";";
+						}
+						
+						datasourceConfig.updateConfiguracao(VariaveisGlobais.usuarioLogado.getId(), lista);
+						datasourceConfig.close();
+				    }
+				   }
+				  });
+			
+			bibliotecaView.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+				   @Override
+				   public void onCheckedChanged(CompoundButton buttonView,
+				     boolean isChecked) {
+				 
+				    if(isChecked){
+				    	DBAdapterConfiguracao datasourceConfig = new DBAdapterConfiguracao(listActivity); 
+						datasourceConfig.open();
+						Cursor cursorListaGruposEnvioUsuario = datasourceConfig.getConfiguracoesBydIdUsuario(VariaveisGlobais.usuarioLogado.getId());
+						String listaGruposStr = "";
+						if(cursorListaGruposEnvioUsuario != null){
+							cursorListaGruposEnvioUsuario.moveToFirst();
+							while (cursorListaGruposEnvioUsuario.isAfterLast() == false) {
+								Configuracao conf = datasourceConfig.cursorToConfiguracao(cursorListaGruposEnvioUsuario);
+								listaGruposStr = conf.getIdsGruposEnvio();
+								cursorListaGruposEnvioUsuario.moveToNext();
+							}
+						}
+						listaGruposStr += "3;";
+						datasourceConfig.updateConfiguracao(VariaveisGlobais.usuarioLogado.getId(), listaGruposStr);
+						datasourceConfig.close();
+				    }else{
+				    	DBAdapterConfiguracao datasourceConfig = new DBAdapterConfiguracao(listActivity); 
+						datasourceConfig.open();
+						Cursor cursorListaGruposEnvioUsuario = datasourceConfig.getConfiguracoesBydIdUsuario(VariaveisGlobais.usuarioLogado.getId());
+						String listaGruposStr = "";
+						if(cursorListaGruposEnvioUsuario != null){
+							cursorListaGruposEnvioUsuario.moveToFirst();
+							while (cursorListaGruposEnvioUsuario.isAfterLast() == false) {
+								Configuracao conf = datasourceConfig.cursorToConfiguracao(cursorListaGruposEnvioUsuario);
+								listaGruposStr = conf.getIdsGruposEnvio();
+								cursorListaGruposEnvioUsuario.moveToNext();
+							}
+						}
+						
+						String[] arrayGrupos = new String[20];
+						if(!listaGruposStr.isEmpty()){
+							arrayGrupos = listaGruposStr.split(";");
+						}
+						
+						Integer[] arrayGruposInt = new Integer[20];
+						if(arrayGrupos != null && arrayGrupos[0] != null){
+							for (int i = 0; i < arrayGrupos.length; i++) {
+								if(Integer.parseInt(arrayGrupos[i]) == 3){
+									continue;
+								}
+								arrayGruposInt[i] = Integer.parseInt(arrayGrupos[i]);
+							}
+						}
+						String lista = "";
+						for (int i = 0; i < arrayGruposInt.length; i++) {
+							if(arrayGruposInt[i] == null){
+								continue;
+							}
+							lista += arrayGruposInt[i] + ";";
+						}
+						
+						datasourceConfig.updateConfiguracao(VariaveisGlobais.usuarioLogado.getId(), lista);
+						datasourceConfig.close();
+				    }
+				   }
+				  });
+			
+			coordenadorCursoView.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+				   @Override
+				   public void onCheckedChanged(CompoundButton buttonView,
+				     boolean isChecked) {
+				 
+				    if(isChecked){
+				    	DBAdapterConfiguracao datasourceConfig = new DBAdapterConfiguracao(listActivity); 
+						datasourceConfig.open();
+						Cursor cursorListaGruposEnvioUsuario = datasourceConfig.getConfiguracoesBydIdUsuario(VariaveisGlobais.usuarioLogado.getId());
+						String listaGruposStr = "";
+						if(cursorListaGruposEnvioUsuario != null){
+							cursorListaGruposEnvioUsuario.moveToFirst();
+							while (cursorListaGruposEnvioUsuario.isAfterLast() == false) {
+								Configuracao conf = datasourceConfig.cursorToConfiguracao(cursorListaGruposEnvioUsuario);
+								listaGruposStr = conf.getIdsGruposEnvio();
+								cursorListaGruposEnvioUsuario.moveToNext();
+							}
+						}
+						listaGruposStr += "4;";
+						datasourceConfig.updateConfiguracao(VariaveisGlobais.usuarioLogado.getId(), listaGruposStr);
+						datasourceConfig.close();
+				    }else{
+				    	DBAdapterConfiguracao datasourceConfig = new DBAdapterConfiguracao(listActivity); 
+						datasourceConfig.open();
+						Cursor cursorListaGruposEnvioUsuario = datasourceConfig.getConfiguracoesBydIdUsuario(VariaveisGlobais.usuarioLogado.getId());
+						String listaGruposStr = "";
+						if(cursorListaGruposEnvioUsuario != null){
+							cursorListaGruposEnvioUsuario.moveToFirst();
+							while (cursorListaGruposEnvioUsuario.isAfterLast() == false) {
+								Configuracao conf = datasourceConfig.cursorToConfiguracao(cursorListaGruposEnvioUsuario);
+								listaGruposStr = conf.getIdsGruposEnvio();
+								cursorListaGruposEnvioUsuario.moveToNext();
+							}
+						}
+						
+						String[] arrayGrupos = new String[20];
+						if(!listaGruposStr.isEmpty()){
+							arrayGrupos = listaGruposStr.split(";");
+						}
+						
+						Integer[] arrayGruposInt = new Integer[20];
+						if(arrayGrupos != null && arrayGrupos[0] != null){
+							for (int i = 0; i < arrayGrupos.length; i++) {
+								if(Integer.parseInt(arrayGrupos[i]) == 4){
+									continue;
+								}
+								arrayGruposInt[i] = Integer.parseInt(arrayGrupos[i]);
+							}
+						}
+						String lista = "";
+						for (int i = 0; i < arrayGruposInt.length; i++) {
+							if(arrayGruposInt[i] == null){
+								continue;
+							}
+							lista += arrayGruposInt[i] + ";";
+						}
+						
+						datasourceConfig.updateConfiguracao(VariaveisGlobais.usuarioLogado.getId(), lista);
+						datasourceConfig.close();
+				    }
+				   }
+				  });
+			
+			direcaoUnidadeView.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+				   @Override
+				   public void onCheckedChanged(CompoundButton buttonView,
+				     boolean isChecked) {
+				 
+				    if(isChecked){
+				    	DBAdapterConfiguracao datasourceConfig = new DBAdapterConfiguracao(listActivity); 
+						datasourceConfig.open();
+						Cursor cursorListaGruposEnvioUsuario = datasourceConfig.getConfiguracoesBydIdUsuario(VariaveisGlobais.usuarioLogado.getId());
+						String listaGruposStr = "";
+						if(cursorListaGruposEnvioUsuario != null){
+							cursorListaGruposEnvioUsuario.moveToFirst();
+							while (cursorListaGruposEnvioUsuario.isAfterLast() == false) {
+								Configuracao conf = datasourceConfig.cursorToConfiguracao(cursorListaGruposEnvioUsuario);
+								listaGruposStr = conf.getIdsGruposEnvio();
+								cursorListaGruposEnvioUsuario.moveToNext();
+							}
+						}
+						listaGruposStr += "5;";
+						datasourceConfig.updateConfiguracao(VariaveisGlobais.usuarioLogado.getId(), listaGruposStr);
+						datasourceConfig.close();
+				    }else{
+				    	DBAdapterConfiguracao datasourceConfig = new DBAdapterConfiguracao(listActivity); 
+						datasourceConfig.open();
+						Cursor cursorListaGruposEnvioUsuario = datasourceConfig.getConfiguracoesBydIdUsuario(VariaveisGlobais.usuarioLogado.getId());
+						String listaGruposStr = "";
+						if(cursorListaGruposEnvioUsuario != null){
+							cursorListaGruposEnvioUsuario.moveToFirst();
+							while (cursorListaGruposEnvioUsuario.isAfterLast() == false) {
+								Configuracao conf = datasourceConfig.cursorToConfiguracao(cursorListaGruposEnvioUsuario);
+								listaGruposStr = conf.getIdsGruposEnvio();
+								cursorListaGruposEnvioUsuario.moveToNext();
+							}
+						}
+						
+						String[] arrayGrupos = new String[20];
+						if(!listaGruposStr.isEmpty()){
+							arrayGrupos = listaGruposStr.split(";");
+						}
+						
+						Integer[] arrayGruposInt = new Integer[20];
+						if(arrayGrupos != null && arrayGrupos[0] != null){
+							for (int i = 0; i < arrayGrupos.length; i++) {
+								if(Integer.parseInt(arrayGrupos[i]) == 5){
+									continue;
+								}
+								arrayGruposInt[i] = Integer.parseInt(arrayGrupos[i]);
+							}
+						}
+						String lista = "";
+						for (int i = 0; i < arrayGruposInt.length; i++) {
+							if(arrayGruposInt[i] == null){
+								continue;
+							}
+							lista += arrayGruposInt[i] + ";";
+						}
+						
+						datasourceConfig.updateConfiguracao(VariaveisGlobais.usuarioLogado.getId(), lista);
+						datasourceConfig.close();
+				    }
+				   }
+				  });
+			
 			switch1.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 				   @Override
 				   public void onCheckedChanged(CompoundButton buttonView,
 				     boolean isChecked) {
 				 
 				    if(isChecked){
-				    	System.out.println("Switch is currently ON");
+				    	DBAdapterConfiguracao datasourceConfig = new DBAdapterConfiguracao(listActivity); 
+						datasourceConfig.open();
+						Cursor cursorListaGruposEnvioUsuario = datasourceConfig.getConfiguracoesBydIdUsuario(VariaveisGlobais.usuarioLogado.getId());
+						String listaGruposStr = "";
+						if(cursorListaGruposEnvioUsuario != null){
+							cursorListaGruposEnvioUsuario.moveToFirst();
+							while (cursorListaGruposEnvioUsuario.isAfterLast() == false) {
+								Configuracao conf = datasourceConfig.cursorToConfiguracao(cursorListaGruposEnvioUsuario);
+								listaGruposStr = conf.getIdsGruposEnvio();
+								cursorListaGruposEnvioUsuario.moveToNext();
+							}
+						}
+						listaGruposStr += "6;";
+						datasourceConfig.updateConfiguracao(VariaveisGlobais.usuarioLogado.getId(), listaGruposStr);
+						datasourceConfig.close();
 				    }else{
-				    	System.out.println("Switch is currently OFF");
+				    	DBAdapterConfiguracao datasourceConfig = new DBAdapterConfiguracao(listActivity); 
+						datasourceConfig.open();
+						Cursor cursorListaGruposEnvioUsuario = datasourceConfig.getConfiguracoesBydIdUsuario(VariaveisGlobais.usuarioLogado.getId());
+						String listaGruposStr = "";
+						if(cursorListaGruposEnvioUsuario != null){
+							cursorListaGruposEnvioUsuario.moveToFirst();
+							while (cursorListaGruposEnvioUsuario.isAfterLast() == false) {
+								Configuracao conf = datasourceConfig.cursorToConfiguracao(cursorListaGruposEnvioUsuario);
+								listaGruposStr = conf.getIdsGruposEnvio();
+								cursorListaGruposEnvioUsuario.moveToNext();
+							}
+						}
+						
+						String[] arrayGrupos = new String[20];
+						if(!listaGruposStr.isEmpty()){
+							arrayGrupos = listaGruposStr.split(";");
+						}
+						
+						Integer[] arrayGruposInt = new Integer[20];
+						if(arrayGrupos != null && arrayGrupos[0] != null){
+							for (int i = 0; i < arrayGrupos.length; i++) {
+								if(Integer.parseInt(arrayGrupos[i]) == 6){
+									continue;
+								}
+								arrayGruposInt[i] = Integer.parseInt(arrayGrupos[i]);
+							}
+						}
+						String lista = "";
+						for (int i = 0; i < arrayGruposInt.length; i++) {
+							if(arrayGruposInt[i] == null){
+								continue;
+							}
+							lista += arrayGruposInt[i] + ";";
+						}
+						
+						datasourceConfig.updateConfiguracao(VariaveisGlobais.usuarioLogado.getId(), lista);
+						datasourceConfig.close();
+				    }
+				   }
+				  });
+			
+			switch2.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+				   @Override
+				   public void onCheckedChanged(CompoundButton buttonView,
+				     boolean isChecked) {
+				 
+				    if(isChecked){
+				    	DBAdapterConfiguracao datasourceConfig = new DBAdapterConfiguracao(listActivity); 
+						datasourceConfig.open();
+						Cursor cursorListaGruposEnvioUsuario = datasourceConfig.getConfiguracoesBydIdUsuario(VariaveisGlobais.usuarioLogado.getId());
+						String listaGruposStr = "";
+						if(cursorListaGruposEnvioUsuario != null){
+							cursorListaGruposEnvioUsuario.moveToFirst();
+							while (cursorListaGruposEnvioUsuario.isAfterLast() == false) {
+								Configuracao conf = datasourceConfig.cursorToConfiguracao(cursorListaGruposEnvioUsuario);
+								listaGruposStr = conf.getIdsGruposEnvio();
+								cursorListaGruposEnvioUsuario.moveToNext();
+							}
+						}
+						listaGruposStr += "7;";
+						datasourceConfig.updateConfiguracao(VariaveisGlobais.usuarioLogado.getId(), listaGruposStr);
+						datasourceConfig.close();
+				    }else{
+				    	DBAdapterConfiguracao datasourceConfig = new DBAdapterConfiguracao(listActivity); 
+						datasourceConfig.open();
+						Cursor cursorListaGruposEnvioUsuario = datasourceConfig.getConfiguracoesBydIdUsuario(VariaveisGlobais.usuarioLogado.getId());
+						String listaGruposStr = "";
+						if(cursorListaGruposEnvioUsuario != null){
+							cursorListaGruposEnvioUsuario.moveToFirst();
+							while (cursorListaGruposEnvioUsuario.isAfterLast() == false) {
+								Configuracao conf = datasourceConfig.cursorToConfiguracao(cursorListaGruposEnvioUsuario);
+								listaGruposStr = conf.getIdsGruposEnvio();
+								cursorListaGruposEnvioUsuario.moveToNext();
+							}
+						}
+						
+						String[] arrayGrupos = new String[20];
+						if(!listaGruposStr.isEmpty()){
+							arrayGrupos = listaGruposStr.split(";");
+						}
+						
+						Integer[] arrayGruposInt = new Integer[20];
+						if(arrayGrupos != null && arrayGrupos[0] != null){
+							for (int i = 0; i < arrayGrupos.length; i++) {
+								if(Integer.parseInt(arrayGrupos[i]) == 7){
+									continue;
+								}
+								arrayGruposInt[i] = Integer.parseInt(arrayGrupos[i]);
+							}
+						}
+						String lista = "";
+						for (int i = 0; i < arrayGruposInt.length; i++) {
+							if(arrayGruposInt[i] == null){
+								continue;
+							}
+							lista += arrayGruposInt[i] + ";";
+						}
+						
+						datasourceConfig.updateConfiguracao(VariaveisGlobais.usuarioLogado.getId(), lista);
+						datasourceConfig.close();
+				    }
+				   }
+				  });
+			
+			switch3.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+				   @Override
+				   public void onCheckedChanged(CompoundButton buttonView,
+				     boolean isChecked) {
+				 
+				    if(isChecked){
+				    	DBAdapterConfiguracao datasourceConfig = new DBAdapterConfiguracao(listActivity); 
+						datasourceConfig.open();
+						Cursor cursorListaGruposEnvioUsuario = datasourceConfig.getConfiguracoesBydIdUsuario(VariaveisGlobais.usuarioLogado.getId());
+						String listaGruposStr = "";
+						if(cursorListaGruposEnvioUsuario != null){
+							cursorListaGruposEnvioUsuario.moveToFirst();
+							while (cursorListaGruposEnvioUsuario.isAfterLast() == false) {
+								Configuracao conf = datasourceConfig.cursorToConfiguracao(cursorListaGruposEnvioUsuario);
+								listaGruposStr = conf.getIdsGruposEnvio();
+								cursorListaGruposEnvioUsuario.moveToNext();
+							}
+						}
+						listaGruposStr += "8;";
+						datasourceConfig.updateConfiguracao(VariaveisGlobais.usuarioLogado.getId(), listaGruposStr);
+						datasourceConfig.close();
+				    }else{
+				    	DBAdapterConfiguracao datasourceConfig = new DBAdapterConfiguracao(listActivity); 
+						datasourceConfig.open();
+						Cursor cursorListaGruposEnvioUsuario = datasourceConfig.getConfiguracoesBydIdUsuario(VariaveisGlobais.usuarioLogado.getId());
+						String listaGruposStr = "";
+						if(cursorListaGruposEnvioUsuario != null){
+							cursorListaGruposEnvioUsuario.moveToFirst();
+							while (cursorListaGruposEnvioUsuario.isAfterLast() == false) {
+								Configuracao conf = datasourceConfig.cursorToConfiguracao(cursorListaGruposEnvioUsuario);
+								listaGruposStr = conf.getIdsGruposEnvio();
+								cursorListaGruposEnvioUsuario.moveToNext();
+							}
+						}
+						
+						String[] arrayGrupos = new String[20];
+						if(!listaGruposStr.isEmpty()){
+							arrayGrupos = listaGruposStr.split(";");
+						}
+						
+						Integer[] arrayGruposInt = new Integer[20];
+						if(arrayGrupos != null && arrayGrupos[0] != null){
+							for (int i = 0; i < arrayGrupos.length; i++) {
+								if(Integer.parseInt(arrayGrupos[i]) == 8){
+									continue;
+								}
+								arrayGruposInt[i] = Integer.parseInt(arrayGrupos[i]);
+							}
+						}
+						String lista = "";
+						for (int i = 0; i < arrayGruposInt.length; i++) {
+							if(arrayGruposInt[i] == null){
+								continue;
+							}
+							lista += arrayGruposInt[i] + ";";
+						}
+						
+						datasourceConfig.updateConfiguracao(VariaveisGlobais.usuarioLogado.getId(), lista);
+						datasourceConfig.close();
+				    }
+				   }
+				  });
+			
+			switch4.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+				   @Override
+				   public void onCheckedChanged(CompoundButton buttonView,
+				     boolean isChecked) {
+				 
+				    if(isChecked){
+				    	DBAdapterConfiguracao datasourceConfig = new DBAdapterConfiguracao(listActivity); 
+						datasourceConfig.open();
+						Cursor cursorListaGruposEnvioUsuario = datasourceConfig.getConfiguracoesBydIdUsuario(VariaveisGlobais.usuarioLogado.getId());
+						String listaGruposStr = "";
+						if(cursorListaGruposEnvioUsuario != null){
+							cursorListaGruposEnvioUsuario.moveToFirst();
+							while (cursorListaGruposEnvioUsuario.isAfterLast() == false) {
+								Configuracao conf = datasourceConfig.cursorToConfiguracao(cursorListaGruposEnvioUsuario);
+								listaGruposStr = conf.getIdsGruposEnvio();
+								cursorListaGruposEnvioUsuario.moveToNext();
+							}
+						}
+						listaGruposStr += "9;";
+						datasourceConfig.updateConfiguracao(VariaveisGlobais.usuarioLogado.getId(), listaGruposStr);
+						datasourceConfig.close();
+				    }else{
+				    	DBAdapterConfiguracao datasourceConfig = new DBAdapterConfiguracao(listActivity); 
+						datasourceConfig.open();
+						Cursor cursorListaGruposEnvioUsuario = datasourceConfig.getConfiguracoesBydIdUsuario(VariaveisGlobais.usuarioLogado.getId());
+						String listaGruposStr = "";
+						if(cursorListaGruposEnvioUsuario != null){
+							cursorListaGruposEnvioUsuario.moveToFirst();
+							while (cursorListaGruposEnvioUsuario.isAfterLast() == false) {
+								Configuracao conf = datasourceConfig.cursorToConfiguracao(cursorListaGruposEnvioUsuario);
+								listaGruposStr = conf.getIdsGruposEnvio();
+								cursorListaGruposEnvioUsuario.moveToNext();
+							}
+						}
+						
+						String[] arrayGrupos = new String[20];
+						if(!listaGruposStr.isEmpty()){
+							arrayGrupos = listaGruposStr.split(";");
+						}
+						
+						Integer[] arrayGruposInt = new Integer[20];
+						if(arrayGrupos != null && arrayGrupos[0] != null){
+							for (int i = 0; i < arrayGrupos.length; i++) {
+								if(Integer.parseInt(arrayGrupos[i]) == 9){
+									continue;
+								}
+								arrayGruposInt[i] = Integer.parseInt(arrayGrupos[i]);
+							}
+						}
+						String lista = "";
+						for (int i = 0; i < arrayGruposInt.length; i++) {
+							if(arrayGruposInt[i] == null){
+								continue;
+							}
+							lista += arrayGruposInt[i] + ";";
+						}
+						
+						datasourceConfig.updateConfiguracao(VariaveisGlobais.usuarioLogado.getId(), lista);
+						datasourceConfig.close();
+				    }
+				   }
+				  });
+			
+			switch5.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+				   @Override
+				   public void onCheckedChanged(CompoundButton buttonView,
+				     boolean isChecked) {
+				 
+				    if(isChecked){
+				    	DBAdapterConfiguracao datasourceConfig = new DBAdapterConfiguracao(listActivity); 
+						datasourceConfig.open();
+						Cursor cursorListaGruposEnvioUsuario = datasourceConfig.getConfiguracoesBydIdUsuario(VariaveisGlobais.usuarioLogado.getId());
+						String listaGruposStr = "";
+						if(cursorListaGruposEnvioUsuario != null){
+							cursorListaGruposEnvioUsuario.moveToFirst();
+							while (cursorListaGruposEnvioUsuario.isAfterLast() == false) {
+								Configuracao conf = datasourceConfig.cursorToConfiguracao(cursorListaGruposEnvioUsuario);
+								listaGruposStr = conf.getIdsGruposEnvio();
+								cursorListaGruposEnvioUsuario.moveToNext();
+							}
+						}
+						listaGruposStr += "10;";
+						datasourceConfig.updateConfiguracao(VariaveisGlobais.usuarioLogado.getId(), listaGruposStr);
+						datasourceConfig.close();
+				    }else{
+				    	DBAdapterConfiguracao datasourceConfig = new DBAdapterConfiguracao(listActivity); 
+						datasourceConfig.open();
+						Cursor cursorListaGruposEnvioUsuario = datasourceConfig.getConfiguracoesBydIdUsuario(VariaveisGlobais.usuarioLogado.getId());
+						String listaGruposStr = "";
+						if(cursorListaGruposEnvioUsuario != null){
+							cursorListaGruposEnvioUsuario.moveToFirst();
+							while (cursorListaGruposEnvioUsuario.isAfterLast() == false) {
+								Configuracao conf = datasourceConfig.cursorToConfiguracao(cursorListaGruposEnvioUsuario);
+								listaGruposStr = conf.getIdsGruposEnvio();
+								cursorListaGruposEnvioUsuario.moveToNext();
+							}
+						}
+						
+						String[] arrayGrupos = new String[20];
+						if(!listaGruposStr.isEmpty()){
+							arrayGrupos = listaGruposStr.split(";");
+						}
+						
+						Integer[] arrayGruposInt = new Integer[20];
+						if(arrayGrupos != null && arrayGrupos[0] != null){
+							for (int i = 0; i < arrayGrupos.length; i++) {
+								if(Integer.parseInt(arrayGrupos[i]) == 10){
+									continue;
+								}
+								arrayGruposInt[i] = Integer.parseInt(arrayGrupos[i]);
+							}
+						}
+						String lista = "";
+						for (int i = 0; i < arrayGruposInt.length; i++) {
+							if(arrayGruposInt[i] == null){
+								continue;
+							}
+							lista += arrayGruposInt[i] + ";";
+						}
+						
+						datasourceConfig.updateConfiguracao(VariaveisGlobais.usuarioLogado.getId(), lista);
+						datasourceConfig.close();
+				    }
+				   }
+				  });
+			
+			switch6.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+				   @Override
+				   public void onCheckedChanged(CompoundButton buttonView,
+				     boolean isChecked) {
+				 
+				    if(isChecked){
+				    	DBAdapterConfiguracao datasourceConfig = new DBAdapterConfiguracao(listActivity); 
+						datasourceConfig.open();
+						Cursor cursorListaGruposEnvioUsuario = datasourceConfig.getConfiguracoesBydIdUsuario(VariaveisGlobais.usuarioLogado.getId());
+						String listaGruposStr = "";
+						if(cursorListaGruposEnvioUsuario != null){
+							cursorListaGruposEnvioUsuario.moveToFirst();
+							while (cursorListaGruposEnvioUsuario.isAfterLast() == false) {
+								Configuracao conf = datasourceConfig.cursorToConfiguracao(cursorListaGruposEnvioUsuario);
+								listaGruposStr = conf.getIdsGruposEnvio();
+								cursorListaGruposEnvioUsuario.moveToNext();
+							}
+						}
+						listaGruposStr += "11;";
+						datasourceConfig.updateConfiguracao(VariaveisGlobais.usuarioLogado.getId(), listaGruposStr);
+						datasourceConfig.close();
+				    }else{
+				    	DBAdapterConfiguracao datasourceConfig = new DBAdapterConfiguracao(listActivity); 
+						datasourceConfig.open();
+						Cursor cursorListaGruposEnvioUsuario = datasourceConfig.getConfiguracoesBydIdUsuario(VariaveisGlobais.usuarioLogado.getId());
+						String listaGruposStr = "";
+						if(cursorListaGruposEnvioUsuario != null){
+							cursorListaGruposEnvioUsuario.moveToFirst();
+							while (cursorListaGruposEnvioUsuario.isAfterLast() == false) {
+								Configuracao conf = datasourceConfig.cursorToConfiguracao(cursorListaGruposEnvioUsuario);
+								listaGruposStr = conf.getIdsGruposEnvio();
+								cursorListaGruposEnvioUsuario.moveToNext();
+							}
+						}
+						
+						String[] arrayGrupos = new String[20];
+						if(!listaGruposStr.isEmpty()){
+							arrayGrupos = listaGruposStr.split(";");
+						}
+						
+						Integer[] arrayGruposInt = new Integer[20];
+						if(arrayGrupos != null && arrayGrupos[0] != null){
+							for (int i = 0; i < arrayGrupos.length; i++) {
+								if(Integer.parseInt(arrayGrupos[i]) == 11){
+									continue;
+								}
+								arrayGruposInt[i] = Integer.parseInt(arrayGrupos[i]);
+							}
+						}
+						String lista = "";
+						for (int i = 0; i < arrayGruposInt.length; i++) {
+							if(arrayGruposInt[i] == null){
+								continue;
+							}
+							lista += arrayGruposInt[i] + ";";
+						}
+						
+						datasourceConfig.updateConfiguracao(VariaveisGlobais.usuarioLogado.getId(), lista);
+						datasourceConfig.close();
 				    }
 				   }
 				  });

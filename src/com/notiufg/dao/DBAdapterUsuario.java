@@ -80,8 +80,8 @@ public class DBAdapterUsuario {
 	
 	public Usuario findUsuarioValido (String login, String senha){ 
         Cursor cursor = null;
-		cursor = database.query(dbHelper.TABLE_NAME, allColumns, dbHelper.NOME + " like '" + 
-				login + "' AND " + dbHelper.SENHA + " like '"+ senha +"' " , null,null, null, null); 
+		cursor = database.query(dbHelper.TABLE_NAME, allColumns, dbHelper.NOME + " like '%" + 
+				login + "%' AND " + dbHelper.SENHA + " like '"+ senha +"' " , null,null, null, null); 
 		cursor.moveToFirst();
        return cursorToUsuario(cursor);
 	}
