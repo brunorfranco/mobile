@@ -44,8 +44,14 @@ public class ListNotificacaoActivity extends ListActivity {
 		
 		Cursor cursor = null;
 		if(VariaveisGlobais.usuarioLogado == null){
-			cursor = datasource.getNotificacoesPublicas();
+			cursor = datasource.getNotificacoesPublicas(orderByData);
 			Toast.makeText(this, "Usuario nao logado, apenas notificacoes publicas!", Toast.LENGTH_LONG).show();
+		
+			if(orderByData.booleanValue() == true){
+				Toast.makeText(this, "Ordenado por Data Crescente!", Toast.LENGTH_LONG).show();
+			} else {
+				Toast.makeText(this, "Nao Ordenado!", Toast.LENGTH_LONG).show();
+			}
 		} else {
 			DBAdapterConfiguracao datasourceConfig = new DBAdapterConfiguracao(this); 
 			datasourceConfig.open();
@@ -69,8 +75,13 @@ public class ListNotificacaoActivity extends ListActivity {
 				return;
 			}
 			
-			cursor = datasource.getNotificacoesEspecificas(VariaveisGlobais.usuarioLogado.getIdCurso(), arrayGrupos);
+			cursor = datasource.getNotificacoesEspecificas(VariaveisGlobais.usuarioLogado.getIdCurso(), arrayGrupos, orderByData);
 			Toast.makeText(this, "Usuario logado, notificacoes publicas e do curso especifico!", Toast.LENGTH_LONG).show();
+			if(orderByData.booleanValue() == true){
+				Toast.makeText(this, "Ordenado por Data Crescente!", Toast.LENGTH_LONG).show();
+			} else {
+				Toast.makeText(this, "Nao Ordenado!", Toast.LENGTH_LONG).show();
+			}
 		}
 		
 		cursor.moveToFirst();

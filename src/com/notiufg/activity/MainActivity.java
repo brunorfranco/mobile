@@ -55,11 +55,13 @@ public class MainActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-//		CargaBancoDados.carregaCursosIniciais(this);
-//		CargaBancoDados.carregaGrupoEnvio(this);
-//		CargaBancoDados.insereUsuarioPadrao(this);
-//		CargaBancoDados.insereConfiguracaoParaUsuarioPadrao(this);
-//		CargaBancoDados.carregaNotificacoesIniciais(this);
+		CargaBancoDados.dropAllTables(this);
+		CargaBancoDados.createAllTables(this);
+		CargaBancoDados.carregaCursosIniciais(this);
+		CargaBancoDados.carregaGrupoEnvio(this);
+		CargaBancoDados.insereUsuarioPadrao(this);
+		CargaBancoDados.insereConfiguracaoParaUsuarioPadrao(this);
+		CargaBancoDados.carregaNotificacoesIniciais(this);
 		
 		mTitle = mDrawerTitle = getTitle();
 		 

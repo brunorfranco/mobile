@@ -52,6 +52,62 @@ public class CargaBancoDados {
 		datasource.close();
 	}
 	
+	public static void dropAllTables(MainActivity mainActivity){
+		DBAdapterCurso datasource = new DBAdapterCurso(mainActivity); 
+		datasource.open();
+		datasource.dropTable();
+		datasource.close();
+		
+		DBAdapterNotificacao datasourceNoti = new DBAdapterNotificacao(mainActivity); 
+		datasourceNoti.open();
+		datasourceNoti.dropTable();
+		datasourceNoti.close();
+		
+		DBAdapterUsuario datasourceUsu = new DBAdapterUsuario(mainActivity); 
+		datasourceUsu.open();
+		datasourceUsu.dropTable();
+		datasourceUsu.close();
+		
+		DBAdapterGrupoEnvio datasourceGru = new DBAdapterGrupoEnvio(mainActivity); 
+		datasourceGru.open();
+		datasourceGru.dropTable();
+		datasourceGru.close();
+		
+		DBAdapterConfiguracao datasourceConf = new DBAdapterConfiguracao(mainActivity); 
+		datasourceConf.open();
+		datasourceConf.dropTable();
+		datasourceConf.close();
+		
+	}
+	
+	public static void createAllTables(MainActivity mainActivity){
+		DBAdapterCurso datasource = new DBAdapterCurso(mainActivity); 
+		datasource.open();
+		datasource.createTable();
+		datasource.close();
+		
+		DBAdapterNotificacao datasourceNoti = new DBAdapterNotificacao(mainActivity); 
+		datasourceNoti.open();
+		datasourceNoti.createTable();
+		datasourceNoti.close();
+		
+		DBAdapterUsuario datasourceUsu = new DBAdapterUsuario(mainActivity); 
+		datasourceUsu.open();
+		datasourceUsu.createTable();
+		datasourceUsu.close();
+		
+		DBAdapterGrupoEnvio datasourceGru = new DBAdapterGrupoEnvio(mainActivity); 
+		datasourceGru.open();
+		datasourceGru.createTable();
+		datasourceGru.close();
+		
+		DBAdapterConfiguracao datasourceConf = new DBAdapterConfiguracao(mainActivity); 
+		datasourceConf.open();
+		datasourceConf.createTable();
+		datasourceConf.close();
+		
+	}
+	
 	public static void dropTableNotificacoes(MainActivity mainActivity){
 		DBAdapterNotificacao datasource = new DBAdapterNotificacao(mainActivity); 
 		datasource.open();
@@ -80,7 +136,7 @@ public class CargaBancoDados {
 //		datasource.dropTable();
 //		datasource.deleteFromTable();
 		datasource.open();
-		datasource.atualizaTabela();
+//		datasource.atualizaTabela();
 		Cursor cursor = datasource.getNotificacoes();
 		cursor.moveToFirst();
 		while (cursor.isAfterLast() == false) {
@@ -94,7 +150,7 @@ public class CargaBancoDados {
 //		datasource.dropTable();
 //		datasource.deleteFromTable();
 		datasource.open();
-		datasource.atualizaTabela();
+//		datasource.atualizaTabela();
 		Cursor cursor = datasource.getCursos();
 		cursor.moveToFirst();
 		while (cursor.isAfterLast() == false) {
@@ -106,7 +162,7 @@ public class CargaBancoDados {
 	
 	private static void limpaDadosGrupoEnvio(DBAdapterGrupoEnvio datasource){
 		datasource.open();
-		datasource.atualizaTabela();
+//		datasource.atualizaTabela();
 		Cursor cursor = datasource.getGruposEnvio();
 		cursor.moveToFirst();
 		while (cursor.isAfterLast() == false) {
@@ -120,8 +176,8 @@ public class CargaBancoDados {
 		
 		DBAdapterGrupoEnvio datasourceGrupo = new DBAdapterGrupoEnvio(mainActivity); 
 		datasourceGrupo.open();
-		for (int i = 0; i < 100; i++) {
-			String texto = "www.google.com.br Texto Teste Texto Teste Texto Teste "
+		for (int i = 0; i < 30; i++) {
+			String texto = "Texto Teste Texto Teste Texto Teste "
 					+ "Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste Texto "
 					+ "Teste Texto Teste Texto Teste" + i;
 			Integer idGrupoEnvio = 1 + (int)(Math.random() * ((20 - 0) + 1));
@@ -129,6 +185,26 @@ public class CargaBancoDados {
 			GrupoEnvio grupo = datasourceGrupo.getGrupoEnvio(idGrupoEnvio);
 			
 			datasource.createNotificacao(grupo.getNomeGrupoEnvio(), texto, getDateTime(), idGrupoEnvio, 0);
+		}
+		for (int i = 0; i < 30; i++) {
+			String texto = "Texto Teste Texto Teste Texto Teste "
+					+ "Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste Texto "
+					+ "Teste Texto Teste Texto Teste" + i;
+			Integer idGrupoEnvio = 1 + (int)(Math.random() * ((20 - 0) + 1));
+			
+			GrupoEnvio grupo = datasourceGrupo.getGrupoEnvio(idGrupoEnvio);
+			
+			datasource.createNotificacao(grupo.getNomeGrupoEnvio(), texto, "2014-01-01 20:20:00", idGrupoEnvio, 0);
+		}
+		for (int i = 0; i < 40; i++) {
+			String texto = "Texto Teste Texto Teste Texto Teste "
+					+ "Texto Teste Texto Teste Texto Teste Texto Teste Texto Teste Texto "
+					+ "Teste Texto Teste Texto Teste" + i;
+			Integer idGrupoEnvio = 1 + (int)(Math.random() * ((20 - 0) + 1));
+			
+			GrupoEnvio grupo = datasourceGrupo.getGrupoEnvio(idGrupoEnvio);
+			
+			datasource.createNotificacao(grupo.getNomeGrupoEnvio(), texto, "2014-02-12 14:20:00", idGrupoEnvio, 0);
 		}
 		datasource.close();
 	}
@@ -224,8 +300,6 @@ public class CargaBancoDados {
 		
 		if (cursor.isAfterLast() != false) {
 			datasource.createConfiguracao(1l, "1;2;3;4;5;6;7;8;9;10;11"); //combinacao de gruposEnvio publicos + eng de software
-			datasource.createConfiguracao(10l, "1;2;3;4;5;6;7;8;9;10;11");
-			datasource.createConfiguracao(11l, "1;2;3;4;5;6;7;8;9;10;11");
 		}
 		
 		datasource.close();

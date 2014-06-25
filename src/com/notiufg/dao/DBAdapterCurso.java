@@ -65,12 +65,15 @@ public class DBAdapterCurso {
 	}
 	
 	public void createTable(){
-		database.rawQuery("create table curso (id integer primary key autoincrement, nomeCurso text not null,"
-				+ "idExterno integer not null);", null); 
+		dbHelper.onCreate(database);
 	}
 	
 	public void atualizaTabela(){
 		dbHelper.onUpgrade(database, 7,8);
+	}
+	
+	public void dropTable(){
+		database.execSQL("DROP TABLE IF EXISTS curso");
 	}
 	
 }

@@ -36,8 +36,8 @@ public class DBAdapterConfiguracao {
         return configuracao; 
 	}
 	
-	public void dropTable (){ 
-        database.rawQuery("drop table configuracao", null);
+	public void dropTable(){
+		database.execSQL("DROP TABLE IF EXISTS configuracao");
 	}
 	
 	public Cursor getConfiguracoes(){ 
@@ -77,6 +77,10 @@ public class DBAdapterConfiguracao {
 	
 	public void deletaConfiguracao (Long idConfiguracao){ 
         database.delete(DbHelperUsuario.TABLE_NAME, DBHelperConfiguracao.ID + " = " + idConfiguracao, null); 
+	}
+	
+	public void createTable(){
+		dbHelper.onCreate(database);
 	}
 	
 }

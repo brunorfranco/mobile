@@ -2,6 +2,8 @@ package com.notiufg.dialog;
 
 import android.app.DialogFragment;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -872,5 +874,12 @@ public class NotificationsViewDialog extends DialogFragment {
 					.show();
 		}
 	};
+	
+	@Override
+	public void onDismiss(DialogInterface dialog) {
+		Intent intent = new Intent(mContext, ListNotificacaoActivity.class);
+	    startActivity(intent);
+		super.onDismiss(dialog);
+	}
 	
 }

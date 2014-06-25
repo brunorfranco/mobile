@@ -73,9 +73,7 @@ public class DBAdapterUsuario {
 	}
 	
 	public void createTable(){
-		database.rawQuery("create table usuario (id integer primary key autoincrement, nome text not null,"
-				+ " cpf text not null, email text not null, telefone text not null, senha text not null,"
-				+ " matricula text not null, idCurso integer not null);", null); 
+		dbHelper.onCreate(database);
 	}
 	
 	public Usuario findUsuarioValido (String login, String senha){ 
@@ -88,6 +86,10 @@ public class DBAdapterUsuario {
 	
 	public void atualizaTabela(){
 		dbHelper.onUpgrade(database, 6, 7);
+	}
+	
+	public void dropTable(){
+		database.execSQL("DROP TABLE IF EXISTS usuario");
 	}
 	
 }

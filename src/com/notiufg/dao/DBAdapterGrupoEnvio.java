@@ -39,8 +39,8 @@ public class DBAdapterGrupoEnvio {
         return grupoEnvio; 
 	}
 	
-	public void dropTable (){ 
-        database.rawQuery("drop table grupoEnvio", null);
+	public void dropTable(){
+		database.execSQL("DROP TABLE IF EXISTS grupoEnvio");
 	}
 	
 	public Cursor getGruposEnvio(){ 
@@ -69,6 +69,10 @@ public class DBAdapterGrupoEnvio {
 	
 	public void deletaGrupoEnvio (Long idGrupo){ 
         database.delete(DbHelperGrupoEnvio.TABLE_NAME, DbHelperGrupoEnvio.ID + " = " + idGrupo, null); 
+	}
+	
+	public void createTable(){
+		dbHelper.onCreate(database);
 	}
 	
 }

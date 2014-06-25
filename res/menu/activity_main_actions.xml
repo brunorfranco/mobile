@@ -3,7 +3,7 @@
     <!-- Search / will display always -->
     <item android:id="@+id/action_order"
           android:icon="@drawable/order2"
-          android:title="Refresh"
+          android:title="Order by"
           android:showAsAction="ifRoom"/>
     
      <item android:id="@+id/action_refresh"
